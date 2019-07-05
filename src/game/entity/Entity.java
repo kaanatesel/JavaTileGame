@@ -2,7 +2,7 @@ package game.entity;
 
 import java.awt.Graphics;
 
-import game.Game;
+import game.Handler;
 
 public abstract class Entity {
 
@@ -11,10 +11,10 @@ public abstract class Entity {
 	protected int health;
 	protected float x, y;
 	protected int height, width;
-	protected Game game;
+	protected Handler handler;
 
-	public Entity( float x, float y, int height, int width, Game game ) {
-		this.game = game;
+	public Entity( float x, float y, int height, int width, Handler handler ) {
+		this.handler = handler;
 		this.x = x;
 		this.y = y;
 		this.height = height;

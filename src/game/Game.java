@@ -5,7 +5,10 @@ import java.awt.image.BufferStrategy;
 
 import game.display.Display;
 import game.entity.player.Player;
+import game.gfx.Assets;
 import game.inputs.KeyManager;
+import game.state.GameState;
+import game.state.State;
 
 public class Game implements Runnable {
 
@@ -23,13 +26,18 @@ public class Game implements Runnable {
 	private Player player;
 	private KeyManager keyManager;
 
+	private GameState gameState;
+
+	// THIS SHOULD NOT BE HERE JUST FOR NOW
+	private Handler handler;
+
 	public Game( String title, int width, int heigth ) {
 		this.height = heigth;
 		this.width = width;
 		this.title = title;
-		player = new Player ( 30, 30, 50, 50, this );
 
 		keyManager = new KeyManager ();
+
 	}
 
 	private void init()
@@ -37,6 +45,15 @@ public class Game implements Runnable {
 		display = new Display ( title, width, height );
 
 		display.getJFrame ().addKeyListener ( keyManager );
+
+		handler = new Handler ( this );
+
+		// States
+		gameState = new GameState ( handler );
+
+		State.setCurrentState ( gameState );
+
+		Assets.init ();
 	}
 
 	@Override
@@ -79,9 +96,10 @@ public class Game implements Runnable {
 
 	public void tick()
 	{
-		keyManager.tick ();
-		
-		player.tick ();
+		if ( State.getCurrentState () != null )
+		{
+			State.getCurrentState ().tick ();
+		}
 	}
 
 	public void render()
@@ -97,7 +115,10 @@ public class Game implements Runnable {
 		g.clearRect ( 0, 0, width, height );
 		// Draw here
 
-		player.render ( g );
+		if ( State.getCurrentState () != null )
+		{
+			State.getCurrentState ().render ( g );
+		}
 
 		// End drawing
 		bs.show ();
@@ -137,6 +158,26 @@ public class Game implements Runnable {
 	public void setKeyManager( KeyManager keyManager )
 	{
 		this.keyManager = keyManager;
+	}
+
+	public int getWidth()
+	{
+		return width;
+	}
+
+	public void setWidth( int width )
+	{
+		this.width = width;
+	}
+
+	public int getHeight()
+	{
+		return height;
+	}
+
+	public void setHeight( int height )
+	{
+		this.height = height;
 	}
 
 }

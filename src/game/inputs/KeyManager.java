@@ -2,35 +2,32 @@ package game.inputs;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashSet;
 
 public class KeyManager implements KeyListener {
-
-	private boolean[] keys;
-	public boolean up, down, left, right;
+	private final java.util.Set<AvailableKey> pressedKeys = new HashSet<> ();
 
 	public KeyManager() {
-		keys = new boolean[256];
+
 	}
 
-	public void tick()
+	public java.util.Set<AvailableKey> getPressedKeys()
 	{
-		up = keys[KeyEvent.VK_W];
-		down = keys[KeyEvent.VK_S];
-		left = keys[KeyEvent.VK_A];
-		right = keys[KeyEvent.VK_D];
+		return pressedKeys;
 	}
 
 	@Override
 	public void keyPressed( KeyEvent e )
 	{
-		keys[e.getKeyCode ()] = true;
 
+		pressedKeys.add ( AvailableKey.getKeyByValue ( e.getKeyCode () ) );
 	}
 
 	@Override
 	public void keyReleased( KeyEvent e )
 	{
-		keys[e.getKeyCode ()] = false;
+
+		pressedKeys.remove ( AvailableKey.getKeyByValue ( e.getKeyCode () ) );
 	}
 
 	@Override

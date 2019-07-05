@@ -3,10 +3,13 @@ package game.entity.player;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
 import game.Game;
+import game.Handler;
 import game.entity.Entity;
 import game.entity.MoveAble;
+import game.gfx.Assets;
 import game.helper.MoveBehaviour;
 import game.inputs.AvailableKey;
 import game.inputs.KeyManager;
@@ -14,32 +17,29 @@ import game.inputs.KeyManager;
 public class Player extends Entity implements MoveAble {
 
 	private final int DEFAULT_SPEED = 5;
-
 	private float speed;
 
+	// Behaviors
 	private MoveBehaviour moveBehaviour;
 
-	// key listener
-	private KeyManager keyManager;
-
-	public Player( float x, float y, int height, int width, Game game ) {
-		super ( x, y, height, width, game );
+	public Player( float x, float y, int height, int width, Handler handler ) {
+		super ( x, y, height, width, handler );
 		speed = DEFAULT_SPEED;
 		moveBehaviour = new MoveBehaviour ( this, speed );
-
-		this.keyManager = game.getKeyManager ();
 	}
 
 	@Override
 	public void move( float speed )
 	{
-		if ( game.getKeyManager ().up )
+
+		//System.out.println ( handler.getKeyManager () );
+		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.up ) )
 			moveBehaviour.moveUp ();
-		if ( game.getKeyManager ().down )
+		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.down ) )
 			moveBehaviour.moveDown ();
-		if ( game.getKeyManager ().right )
+		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.right ) )
 			moveBehaviour.moveRight ();
-		if ( game.getKeyManager ().left )
+		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.left ) )
 			moveBehaviour.moveLeft ();
 	}
 
@@ -52,7 +52,7 @@ public class Player extends Entity implements MoveAble {
 	@Override
 	public void render( Graphics g )
 	{
-		g.fillOval ( (int) x, (int) y, width, height );
+		g.drawImage ( Assets.getPlayer (), (int) x, (int) y, 100, 100, null );
 	}
 
 }
