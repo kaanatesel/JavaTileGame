@@ -1,18 +1,12 @@
 package game.entity.player;
 
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-
-import game.Game;
 import game.Handler;
 import game.entity.Entity;
 import game.entity.MoveAble;
+import game.entity.MoveBehaviour;
 import game.gfx.Assets;
-import game.helper.MoveBehaviour;
 import game.inputs.AvailableKey;
-import game.inputs.KeyManager;
 
 public class Player extends Entity implements MoveAble {
 
@@ -32,7 +26,7 @@ public class Player extends Entity implements MoveAble {
 	public void move( float speed )
 	{
 
-		//System.out.println ( handler.getKeyManager () );
+		// System.out.println ( handler.getKeyManager () );
 		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.up ) )
 			moveBehaviour.moveUp ();
 		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.down ) )
@@ -47,12 +41,15 @@ public class Player extends Entity implements MoveAble {
 	public void tick()
 	{
 		move ( speed );
+		System.out.println ( handler );
+		handler.getGameCamera ().centerOnEntity ( this );
 	}
 
 	@Override
 	public void render( Graphics g )
 	{
-		g.drawImage ( Assets.getPlayer (), (int) x, (int) y, 100, 100, null );
+		g.drawImage ( Assets.getPlayer (), (int) (x - handler.getGameCamera ().getxOffset ()),
+		        (int) (y - handler.getGameCamera ().getyOffset ()), width, height, null );
 	}
 
 }

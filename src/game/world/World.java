@@ -32,7 +32,8 @@ public class World {
 		{
 			for ( int y = 0; y < heigth; y++ )
 			{
-				getTile ( x, y ).render ( g, x * TileBase.WIDTH , y * TileBase.HEIGHT);
+				getTile ( x, y ).render ( g, (int) (x * TileBase.WIDTH - handler.getGameCamera ().getxOffset ()),
+				        (int) (y * TileBase.HEIGHT - handler.getGameCamera ().getyOffset ()) );
 			}
 		}
 		player.render ( g );
@@ -64,4 +65,57 @@ public class World {
 			}
 		}
 	}
+
+	// Getters and Setters
+
+	public int getWidth()
+	{
+		return width;
+	}
+
+	public void setWidth( int width )
+	{
+		this.width = width;
+	}
+
+	public int getHeigth()
+	{
+		return heigth;
+	}
+
+	public void setHeigth( int heigth )
+	{
+		this.heigth = heigth;
+	}
+
+	public Handler getHandler()
+	{
+		return handler;
+	}
+
+	public void setHandler( Handler handler )
+	{
+		this.handler = handler;
+	}
+
+	public int getSpawnX()
+	{
+		return spawnX;
+	}
+
+	public void setSpawnX( int spawnX )
+	{
+		this.spawnX = spawnX;
+	}
+
+	public int getSpawnY()
+	{
+		return spawnY;
+	}
+
+	public void setSpawnY( int spawnY )
+	{
+		this.spawnY = spawnY;
+	}
+
 }

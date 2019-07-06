@@ -1,6 +1,4 @@
-package game.helper;
-
-import game.entity.Entity;
+package game.entity;
 
 public class MoveBehaviour {
 

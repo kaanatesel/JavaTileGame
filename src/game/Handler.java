@@ -1,5 +1,6 @@
 package game;
 
+import game.helper.GameCamera;
 import game.inputs.KeyManager;
 import game.world.World;
 
@@ -35,6 +36,11 @@ public class Handler {
 	public World getWorld()
 	{
 		return world;
+	}
+
+	public GameCamera getGameCamera()
+	{
+		return game.getGameCamera ();
 	}
 
 	public void setWorld( World world )

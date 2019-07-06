@@ -6,6 +6,7 @@ import java.awt.image.BufferStrategy;
 import game.display.Display;
 import game.entity.player.Player;
 import game.gfx.Assets;
+import game.helper.GameCamera;
 import game.inputs.KeyManager;
 import game.state.GameState;
 import game.state.State;
@@ -23,12 +24,11 @@ public class Game implements Runnable {
 	private int width, height;
 	private String title;
 
-	private Player player;
 	private KeyManager keyManager;
+	private GameCamera gameCamera;
 
 	private GameState gameState;
 
-	// THIS SHOULD NOT BE HERE JUST FOR NOW
 	private Handler handler;
 
 	public Game( String title, int width, int heigth ) {
@@ -37,7 +37,7 @@ public class Game implements Runnable {
 		this.title = title;
 
 		keyManager = new KeyManager ();
-
+		gameCamera = new GameCamera ( 0, 0, handler );
 	}
 
 	private void init()
@@ -47,7 +47,7 @@ public class Game implements Runnable {
 		display.getJFrame ().addKeyListener ( keyManager );
 
 		handler = new Handler ( this );
-
+		gameCamera = new GameCamera ( 0, 0, handler );
 		// States
 		gameState = new GameState ( handler );
 
@@ -178,6 +178,16 @@ public class Game implements Runnable {
 	public void setHeight( int height )
 	{
 		this.height = height;
+	}
+
+	public GameCamera getGameCamera()
+	{
+		return gameCamera;
+	}
+
+	public void setGameCamera( GameCamera gameCamera )
+	{
+		this.gameCamera = gameCamera;
 	}
 
 }
