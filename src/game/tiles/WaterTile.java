@@ -8,7 +8,7 @@ public class WaterTile extends TileBase implements notSolid{
 
 	public WaterTile(int id , int resistance) {
 		super ( Assets.getWater (), id );
-		// TODO Auto-generated constructor stub
+		this.moveResistance = resistance;
 	}
 
 	@Override

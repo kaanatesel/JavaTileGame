@@ -1,7 +1,5 @@
 package game.tiles;
 
-import java.awt.image.BufferedImage;
-
 import game.gfx.Assets;
 
 public class DustTile extends TileBase implements notSolid {

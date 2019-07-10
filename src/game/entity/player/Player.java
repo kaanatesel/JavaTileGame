@@ -71,4 +71,16 @@ public class Player extends Entity implements MoveAble {
 	{
 		return bounds;
 	}
+
+	@Override
+	public Handler getHandler()
+	{
+		return handler;
+	}
+
+	@Override
+	public float getSpeed()
+	{
+		return speed;
+	}
 }

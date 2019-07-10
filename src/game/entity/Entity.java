@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 import game.Handler;
 
-public abstract class Entity {
+public abstract class Entity implements EntityBase {
 
 	private final int DEFOULT_HEALTH = 20;
 
@@ -14,7 +14,7 @@ public abstract class Entity {
 	protected int height, width;
 	protected Handler handler;
 	protected Rectangle bounds;
-	
+
 	public Entity( float x, float y, int height, int width, Handler handler ) {
 		this.handler = handler;
 		this.x = x;

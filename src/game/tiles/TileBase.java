@@ -12,7 +12,7 @@ public class TileBase implements Tile {
 
 	// Tiles
 	public static RockTile rockTile = new RockTile ( 0 );
-	public static WaterTile waterTile = new WaterTile ( 1, 10 );
+	public static WaterTile waterTile = new WaterTile ( 1, 3 );
 	public static DustTile dustTile = new DustTile ( 2, 0 );
 
 	private int xLoc, yLoc;
