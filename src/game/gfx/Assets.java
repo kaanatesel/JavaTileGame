@@ -16,9 +16,10 @@ public class Assets {
 		SpriteSheet sheet = new SpriteSheet ( ImageLoader.loadImage ( "/images/Assets2.png" ) );
 
 		water = sheet.crop ( CROP_WIDTH, 0, CROP_WIDTH, CROP_HEIGHT );
-		dust = sheet.crop ( 0, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
+		dust = sheet.crop ( CROP_WIDTH * 2, 0, CROP_WIDTH, CROP_HEIGHT );
+		rock = sheet.crop ( 0, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
 		tree = sheet.crop ( CROP_WIDTH * 3, 0, CROP_WIDTH, CROP_HEIGHT );
-		rock = sheet.crop ( CROP_WIDTH * 2, 0, CROP_WIDTH, CROP_HEIGHT );
+		
 
 		player = sheet.crop ( 0, 0, CROP_WIDTH, CROP_HEIGHT );
 

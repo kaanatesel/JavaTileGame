@@ -31,7 +31,6 @@ public class GameCamera {
 
 	public void centerOnEntity( Player player )
 	{
-		System.out.println ( handler );
 		xOffset = player.getX () - handler.getWidth () / 2 - player.getWidth ();
 		yOffset = player.getY () - handler.getHeight () / 2 - player.getHeight ();
 		checkBlankSpaces ( player );

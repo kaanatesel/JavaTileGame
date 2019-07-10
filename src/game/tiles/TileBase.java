@@ -14,7 +14,8 @@ public class TileBase implements Tile {
 	public static RockTile rockTile = new RockTile ( 0 );
 	public static WaterTile waterTile = new WaterTile ( 1, 10 );
 	public static DustTile dustTile = new DustTile ( 2, 0 );
-	
+
+	private int xLoc, yLoc;
 
 	public TileBase( BufferedImage texture, int id ) {
 
@@ -34,6 +35,9 @@ public class TileBase implements Tile {
 	public void render( Graphics g, int x, int y )
 	{
 		g.drawImage ( texture, x, y, WIDTH, HEIGHT, null );
+		xLoc = x;
+		yLoc = y;
+
 	}
 
 	@Override
@@ -83,5 +87,25 @@ public class TileBase implements Tile {
 	public static RockTile getRockTile()
 	{
 		return rockTile;
+	}
+
+	public int getxLoc()
+	{
+		return xLoc;
+	}
+
+	public void setxLoc( int xLoc )
+	{
+		this.xLoc = xLoc;
+	}
+
+	public int getyLoc()
+	{
+		return yLoc;
+	}
+
+	public void setyLoc( int yLoc )
+	{
+		this.yLoc = yLoc;
 	}
 }

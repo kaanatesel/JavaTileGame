@@ -1,6 +1,8 @@
 package game.entity.player;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
+
 import game.Handler;
 import game.entity.Entity;
 import game.entity.MoveAble;
@@ -12,7 +14,6 @@ public class Player extends Entity implements MoveAble {
 
 	private final int DEFAULT_SPEED = 5;
 	private float speed;
-
 	// Behaviors
 	private MoveBehaviour moveBehaviour;
 
@@ -20,28 +21,42 @@ public class Player extends Entity implements MoveAble {
 		super ( x, y, height, width, handler );
 		speed = DEFAULT_SPEED;
 		moveBehaviour = new MoveBehaviour ( this, speed );
+		bounds = new Rectangle ();
+
+		bounds.x = 18;
+		bounds.y = 16;
+		bounds.width = 28;
+		bounds.height = 48;
 	}
 
 	@Override
 	public void move( float speed )
 	{
-
-		// System.out.println ( handler.getKeyManager () );
-		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.up ) )
-			moveBehaviour.moveUp ();
-		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.down ) )
-			moveBehaviour.moveDown ();
 		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.right ) )
+		{
 			moveBehaviour.moveRight ();
+		}
+
 		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.left ) )
+		{
 			moveBehaviour.moveLeft ();
+		}
+
+		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.up ) )
+		{
+			moveBehaviour.moveUp ();
+		}
+
+		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.down ) )
+		{
+			moveBehaviour.moveDown ();
+		}
 	}
 
 	@Override
 	public void tick()
 	{
 		move ( speed );
-		System.out.println ( handler );
 		handler.getGameCamera ().centerOnEntity ( this );
 	}
 
@@ -52,4 +67,8 @@ public class Player extends Entity implements MoveAble {
 		        (int) (y - handler.getGameCamera ().getyOffset ()), width, height, null );
 	}
 
+	public Rectangle getBounds()
+	{
+		return bounds;
+	}
 }

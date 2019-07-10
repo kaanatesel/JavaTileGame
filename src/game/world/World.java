@@ -18,7 +18,7 @@ public class World {
 	public World( Handler handler, String path ) {
 		this.handler = handler;
 		loadWorld ( path );
-		player = new Player ( spawnX, spawnY, 100, 100, handler );
+		player = new Player ( spawnX, spawnY, TileBase.WIDTH, TileBase.HEIGHT, handler );
 	}
 
 	public void tick()
@@ -41,10 +41,14 @@ public class World {
 
 	public TileBase getTile( int x, int y )
 	{
+		if ( x < 0 || y < 0 || x >= width || y >= heigth )
+			return TileBase.getDustTile ();
+
 		TileBase t = TileBase.tiles[tiles[x][y]];
 		if ( t == null )
 			return TileBase.getDustTile ();
-		return t;
+		else
+			return t;
 	}
 
 	private void loadWorld( String path )

@@ -1,6 +1,7 @@
 package game.entity;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import game.Handler;
 
@@ -12,7 +13,8 @@ public abstract class Entity {
 	protected float x, y;
 	protected int height, width;
 	protected Handler handler;
-
+	protected Rectangle bounds;
+	
 	public Entity( float x, float y, int height, int width, Handler handler ) {
 		this.handler = handler;
 		this.x = x;
@@ -84,6 +86,16 @@ public abstract class Entity {
 	public void setWidth( int width )
 	{
 		this.width = width;
+	}
+
+	public Rectangle getBounds()
+	{
+		return bounds;
+	}
+
+	public void setBounds( Rectangle bounds )
+	{
+		this.bounds = bounds;
 	}
 
 }
