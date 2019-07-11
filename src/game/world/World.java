@@ -14,11 +14,13 @@ public class World {
 	private Handler handler;
 	private int spawnX, spawnY;
 	private Player player;
-
+	
 	public World( Handler handler, String path ) {
 		this.handler = handler;
 		loadWorld ( path );
 		player = new Player ( spawnX, spawnY, TileBase.WIDTH, TileBase.HEIGHT, handler );
+		
+		
 	}
 
 	public void tick()

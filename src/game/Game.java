@@ -46,6 +46,8 @@ public class Game implements Runnable {
 
 		display.getJFrame ().addKeyListener ( keyManager );
 
+		Assets.init ();
+		
 		handler = new Handler ( this );
 		gameCamera = new GameCamera ( 0, 0, handler );
 		// States
@@ -53,7 +55,7 @@ public class Game implements Runnable {
 
 		State.setCurrentState ( gameState );
 
-		Assets.init ();
+		
 	}
 
 	@Override
