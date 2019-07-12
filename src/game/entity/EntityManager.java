@@ -16,6 +16,8 @@ public class EntityManager {
 		this.handler = handler;
 		this.player = player;
 		entities = new ArrayList<Entity> ();
+		
+		addEntity ( player );
 	}
 
 	public void removeEntity( Entity entity )
@@ -44,4 +46,34 @@ public class EntityManager {
 		}
 	}
 
+	// Getters and Setter
+	public ArrayList<Entity> getEntities()
+	{
+		return entities;
+	}
+
+	public void setEntities( ArrayList<Entity> entities )
+	{
+		this.entities = entities;
+	}
+
+	public Handler getHandler()
+	{
+		return handler;
+	}
+
+	public void setHandler( Handler handler )
+	{
+		this.handler = handler;
+	}
+
+	public Player getPlayer()
+	{
+		return player;
+	}
+
+	public void setPlayer( Player player )
+	{
+		this.player = player;
+	}
 }

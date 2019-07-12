@@ -10,6 +10,7 @@ public class Assets {
 	private static BufferedImage tree;
 	private static BufferedImage dust;
 	private static BufferedImage rock;
+	private static BufferedImage stone;
 
 	// Player Animations
 	private static BufferedImage playerStanding;
@@ -30,12 +31,13 @@ public class Assets {
 		dust = sheet.crop ( CROP_WIDTH * 2, 0, CROP_WIDTH, CROP_HEIGHT );
 		rock = sheet.crop ( 0, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
 		tree = sheet.crop ( CROP_WIDTH * 3, 0, CROP_WIDTH, CROP_HEIGHT );
+		stone = sheet.crop ( CROP_WIDTH * 3, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
 
 		playerWalkingDown = new BufferedImage[2];
 		playerWalkingUp = new BufferedImage[2];
 		playerWalkingRight = new BufferedImage[2];
 		playerWalkingLeft = new BufferedImage[2];
-		
+
 		playerSwimmingDown = new BufferedImage[2];
 		playerSwimmingUp = new BufferedImage[2];
 		playerSwimmingRight = new BufferedImage[2];
@@ -57,16 +59,16 @@ public class Assets {
 		playerWalkingLeft[1] = sheet.crop ( 0, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
 		// Player Swimming
 		playerSwimmingDown[0] = sheet.crop ( CROP_WIDTH * 5, 0, CROP_WIDTH, CROP_HEIGHT );
-		playerSwimmingDown[1] = sheet.crop ( CROP_WIDTH * 5, CROP_HEIGHT , CROP_WIDTH, CROP_HEIGHT );
+		playerSwimmingDown[1] = sheet.crop ( CROP_WIDTH * 5, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
 
 		playerSwimmingUp[0] = sheet.crop ( CROP_WIDTH * 4, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
 		playerSwimmingUp[1] = sheet.crop ( CROP_WIDTH * 4, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
-		
-		playerSwimmingRight[0] = sheet.crop ( CROP_WIDTH * 5, CROP_HEIGHT * 2, CROP_WIDTH , CROP_HEIGHT );
-		playerSwimmingRight[1] = sheet.crop ( CROP_WIDTH * 5, CROP_HEIGHT * 3, CROP_WIDTH , CROP_HEIGHT );
-		
+
+		playerSwimmingRight[0] = sheet.crop ( CROP_WIDTH * 5, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
+		playerSwimmingRight[1] = sheet.crop ( CROP_WIDTH * 5, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
+
 		playerSwimmingLeft[0] = sheet.crop ( CROP_WIDTH * 6, 0, CROP_WIDTH, CROP_HEIGHT );
-		playerSwimmingLeft[1] = sheet.crop ( CROP_WIDTH * 6, CROP_HEIGHT , CROP_WIDTH, CROP_HEIGHT );
+		playerSwimmingLeft[1] = sheet.crop ( CROP_WIDTH * 6, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
 
 	}
 
@@ -201,5 +203,16 @@ public class Assets {
 	{
 		Assets.playerSwimmingLeft = playerSwimmingLeft;
 	}
+
+	public static BufferedImage getStone()
+	{
+		return stone;
+	}
+
+	public static void setStone( BufferedImage stone )
+	{
+		Assets.stone = stone;
+	}
+	
 
 }

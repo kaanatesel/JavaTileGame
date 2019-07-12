@@ -3,7 +3,10 @@ package game.world;
 import java.awt.Graphics;
 
 import game.Handler;
+import game.entity.EntityManager;
 import game.entity.player.Player;
+import game.entity.staticEntity.Stone;
+import game.entity.staticEntity.Tree;
 import game.gfx.LoadFileAsString;
 import game.tiles.TileBase;
 
@@ -14,18 +17,28 @@ public class World {
 	private Handler handler;
 	private int spawnX, spawnY;
 	private Player player;
-	
+
+	private EntityManager entityManager;
+
 	public World( Handler handler, String path ) {
 		this.handler = handler;
 		loadWorld ( path );
+
 		player = new Player ( spawnX, spawnY, TileBase.WIDTH, TileBase.HEIGHT, handler );
-		
-		
+
+		entityManager = new EntityManager ( handler, player );
+
+		entityManager.addEntity ( new Tree ( 200, 200, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
+		entityManager.addEntity ( new Stone ( 400, 100, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
+
+		entityManager.getPlayer ().setX ( spawnX );
+		entityManager.getPlayer ().setY ( spawnY );
+
 	}
 
 	public void tick()
 	{
-		player.tick ();
+		entityManager.tick ();
 	}
 
 	public void render( Graphics g )
@@ -38,7 +51,7 @@ public class World {
 				        (int) (y * TileBase.HEIGHT - handler.getGameCamera ().getyOffset ()) );
 			}
 		}
-		player.render ( g );
+		entityManager.render ( g );
 	}
 
 	public TileBase getTile( int x, int y )
