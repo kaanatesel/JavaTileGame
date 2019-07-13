@@ -126,7 +126,6 @@ public class Player extends Entity implements MoveAble {
 		playerUpWalk.tick ();
 		playerLeftWalk.tick ();
 		playerRightWalk.tick ();
-
 	}
 
 	@Override

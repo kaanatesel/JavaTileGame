@@ -26,4 +26,8 @@ public interface EntityBase {
 
 	Rectangle getBounds();
 
+	Rectangle getCollisionBounds( float xOffset, float yOffset );
+
+	boolean checkEntityCollision( float xOffset, float yOffsett );
+
 }

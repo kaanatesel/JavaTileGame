@@ -2,12 +2,15 @@ package game.entity;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import game.Handler;
 
 public abstract class Entity implements EntityBase {
 
 	private final int DEFOULT_HEALTH = 20;
+
+	private ArrayList<Entity> entList;
 
 	protected int health;
 	protected float x, y;
@@ -22,6 +25,8 @@ public abstract class Entity implements EntityBase {
 		this.height = height;
 		this.width = width;
 		this.health = DEFOULT_HEALTH;
+
+		bounds = new Rectangle ( (int) x, (int) y, width, height );
 	}
 
 	public Entity( float x, float y, int height, int width, int health ) {
@@ -35,6 +40,27 @@ public abstract class Entity implements EntityBase {
 	public abstract void tick();
 
 	public abstract void render( Graphics g );
+
+	public boolean checkEntityCollision( float xOffset, float yOffsett )
+	{
+		entList = handler.getWorld ().getEntityManager ().getEntities ();
+		for ( Entity e : entList )
+		{
+			// if ( e == handler.getWorld ().getEntityManager ().getPlayer () )
+			if ( e.equals ( this ) )
+				continue;
+			if ( e.getCollisionBounds ( 0f, 0f ).intersects ( getCollisionBounds ( xOffset, yOffsett ) ) )
+				return true;
+		}
+
+		return false;
+	}
+
+	public Rectangle getCollisionBounds( float xOffset, float yOffset )
+	{
+		return new Rectangle ( (int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width,
+		        bounds.height );
+	}
 
 	// Getters and Setters
 

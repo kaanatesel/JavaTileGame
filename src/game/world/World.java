@@ -13,7 +13,7 @@ import game.tiles.TileBase;
 public class World {
 
 	private int[][] tiles;
-	private int width, heigth;
+	public int width, heigth;
 	private Handler handler;
 	private int spawnX, spawnY;
 	private Player player;
@@ -52,6 +52,8 @@ public class World {
 			}
 		}
 		entityManager.render ( g );
+		// collisionDetection.render ( g );
+
 	}
 
 	public TileBase getTile( int x, int y )
@@ -90,6 +92,27 @@ public class World {
 	public int getWidth()
 	{
 		return width;
+	}
+	
+
+	public Player getPlayer()
+	{
+		return player;
+	}
+
+	public void setPlayer( Player player )
+	{
+		this.player = player;
+	}
+
+	public EntityManager getEntityManager()
+	{
+		return entityManager;
+	}
+
+	public void setEntityManager( EntityManager entityManager )
+	{
+		this.entityManager = entityManager;
 	}
 
 	public void setWidth( int width )

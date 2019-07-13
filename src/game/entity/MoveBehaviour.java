@@ -26,8 +26,12 @@ public class MoveBehaviour {
 		                ty ) instanceof Solid )
 		{
 		}
+		else if ( entity.checkEntityCollision ( 0f, -speed ) )
+		{
+		}
 		else
 		{
+
 			speed = entity.getSpeed () - checkNotSolidTile ();
 			entity.setY ( entity.getY () - speed );
 		}
@@ -42,6 +46,9 @@ public class MoveBehaviour {
 		        || entity.getHandler ().getWorld ().getTile ( tx,
 		                (int) ((entity.getY () + +entity.getBounds ().y + entity.getBounds ().height)
 		                        / TileBase.HEIGHT) ) instanceof Solid )
+		{
+		}
+		else if ( entity.checkEntityCollision ( -speed, 0f ) )
 		{
 		}
 		else
@@ -63,6 +70,9 @@ public class MoveBehaviour {
 		                        / TileBase.HEIGHT) ) instanceof Solid )
 		{
 		}
+		else if ( entity.checkEntityCollision ( speed, 0f ) )
+		{
+		}
 		else
 		{
 			speed = entity.getSpeed () - checkNotSolidTile ();
@@ -80,6 +90,9 @@ public class MoveBehaviour {
 		        || entity.getHandler ().getWorld ().getTile (
 		                (int) ((entity.getX () + entity.getBounds ().x + entity.getBounds ().width) / TileBase.WIDTH),
 		                ty ) instanceof Solid )
+		{
+		}
+		else if ( entity.checkEntityCollision ( 0f, speed ) )
 		{
 		}
 		else
