@@ -13,7 +13,14 @@ public class Assets {
 	private static BufferedImage stone;
 
 	// Player Animations
-	private static BufferedImage playerStanding;
+	private static BufferedImage playerLeftStanding;
+	private static BufferedImage playerUpStanding;
+	private static BufferedImage playerRightStanding;
+	private static BufferedImage playerDownStanding;
+	private static BufferedImage playerDownStandSwimming;
+	private static BufferedImage playerUpStandSwimming;
+	private static BufferedImage playerLeftStandSwimming;
+	private static BufferedImage playerRightStandSwimming;
 	private static BufferedImage[] playerWalkingLeft;
 	private static BufferedImage[] playerWalkingRight;
 	public static BufferedImage[] playerWalkingUp;
@@ -44,7 +51,16 @@ public class Assets {
 		playerSwimmingLeft = new BufferedImage[2];
 
 		// Player
-		playerStanding = sheet.crop ( 0, 0, CROP_WIDTH, CROP_HEIGHT );
+		playerRightStanding = sheet.crop ( CROP_WIDTH * 2, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
+		playerLeftStanding = sheet.crop ( 0, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
+		playerDownStanding = sheet.crop ( 0, 0, CROP_WIDTH, CROP_HEIGHT );
+		playerUpStanding = sheet.crop ( CROP_WIDTH * 6, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
+
+		playerLeftStandSwimming = sheet.crop ( CROP_WIDTH * 6, 0, CROP_WIDTH, CROP_HEIGHT );
+		playerRightStandSwimming = sheet.crop ( CROP_WIDTH * 5, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
+		playerDownStandSwimming = sheet.crop ( CROP_WIDTH * 5, 0, CROP_WIDTH, CROP_HEIGHT );
+		playerUpStandSwimming = sheet.crop ( CROP_WIDTH * 4, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
+
 		// Player walking
 		playerWalkingDown[0] = sheet.crop ( CROP_WIDTH, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
 		playerWalkingDown[1] = sheet.crop ( CROP_WIDTH * 2, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
@@ -74,16 +90,6 @@ public class Assets {
 
 	// GETTERS AND SETTERS
 
-	public static BufferedImage getPlayer()
-	{
-		return playerStanding;
-	}
-
-	public static void setPlayer( BufferedImage player )
-	{
-		Assets.playerStanding = player;
-	}
-
 	public static BufferedImage getWater()
 	{
 		return water;
@@ -92,6 +98,86 @@ public class Assets {
 	public static void setWater( BufferedImage water )
 	{
 		Assets.water = water;
+	}
+
+	public static BufferedImage getPlayerDownStandSwimming()
+	{
+		return playerDownStandSwimming;
+	}
+
+	public static void setPlayerDownStandSwimming( BufferedImage playerDownStandSwimming )
+	{
+		Assets.playerDownStandSwimming = playerDownStandSwimming;
+	}
+
+	public static BufferedImage getPlayerUpStandSwimming()
+	{
+		return playerUpStandSwimming;
+	}
+
+	public static void setPlayerUpStandSwimming( BufferedImage playerUpStandSwimming )
+	{
+		Assets.playerUpStandSwimming = playerUpStandSwimming;
+	}
+
+	public static BufferedImage getPlayerLeftStandSwimming()
+	{
+		return playerLeftStandSwimming;
+	}
+
+	public static void setPlayerLeftStandSwimming( BufferedImage playerLeftStandSwimming )
+	{
+		Assets.playerLeftStandSwimming = playerLeftStandSwimming;
+	}
+
+	public static BufferedImage getPlayerRightStandSwimming()
+	{
+		return playerRightStandSwimming;
+	}
+
+	public static void setPlayerRightStandSwimming( BufferedImage playerRightStandSwimming )
+	{
+		Assets.playerRightStandSwimming = playerRightStandSwimming;
+	}
+
+	public static BufferedImage getPlayerLeftStanding()
+	{
+		return playerLeftStanding;
+	}
+
+	public static void setPlayerLeftStanding( BufferedImage playerLeftStanding )
+	{
+		Assets.playerLeftStanding = playerLeftStanding;
+	}
+
+	public static BufferedImage getPlayerUpStanding()
+	{
+		return playerUpStanding;
+	}
+
+	public static void setPlayerUpStanding( BufferedImage playerUpStanding )
+	{
+		Assets.playerUpStanding = playerUpStanding;
+	}
+
+	public static BufferedImage getPlayerRightStanding()
+	{
+		return playerRightStanding;
+	}
+
+	public static void setPlayerRightStanding( BufferedImage playerRightStanding )
+	{
+		Assets.playerRightStanding = playerRightStanding;
+	}
+
+	public static BufferedImage getPlayerDownStanding()
+	{
+		return playerDownStanding;
+	}
+
+	public static void setPlayerDownStanding( BufferedImage playerDownStanding )
+	{
+		Assets.playerDownStanding = playerDownStanding;
 	}
 
 	public static BufferedImage getTree()
@@ -213,6 +299,5 @@ public class Assets {
 	{
 		Assets.stone = stone;
 	}
-	
 
 }

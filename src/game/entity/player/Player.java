@@ -44,6 +44,8 @@ public class Player extends Entity implements MoveAble {
 		bounds.width = 28;
 		bounds.height = 48;
 		// Player Animations
+		playerStanding = Assets.getPlayerDownStanding ();
+
 		playerUpWalk = new Animation ( 300, Assets.playerWalkingUp );
 		playerDownWalk = new Animation ( 300, Assets.getPlayerWalkingDown () );
 		playerLeftWalk = new Animation ( 300, Assets.getPlayerWalkingLeft () );
@@ -59,6 +61,8 @@ public class Player extends Entity implements MoveAble {
 	@Override
 	public void move( float speed )
 	{
+		System.out.println ( moveBehaviour.getEntityFace () );
+
 		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.right ) )
 		{
 			moveBehaviour.moveRight ();
@@ -87,28 +91,56 @@ public class Player extends Entity implements MoveAble {
 		        (int) (y + bounds.height + bounds.y) / TileBase.HEIGHT ) instanceof WaterTile )
 		{
 			if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.right ) )
+			{
+				playerStanding = Assets.getPlayerRightStandSwimming ();
 				return playerRightSwim.getCurrentFrame ();
+			}
 			else if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.left ) )
+			{
+				playerStanding = Assets.getPlayerLeftStandSwimming ();
 				return playerLeftSwim.getCurrentFrame ();
+			}
 			else if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.up ) )
+			{
+				playerStanding = Assets.getPlayerUpStandSwimming ();
 				return playerUpSwim.getCurrentFrame ();
+			}
 			else if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.down ) )
+			{
+				playerStanding = Assets.getPlayerDownStandSwimming ();
 				return playerDownSwim.getCurrentFrame ();
+			}
 			else
-				return Assets.getPlayer ();
+			{
+				return playerStanding;
+			}
 		}
 		else
 		{
 			if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.right ) )
+			{
+				playerStanding = Assets.getPlayerRightStanding ();
 				return playerRightWalk.getCurrentFrame ();
+			}
 			else if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.left ) )
+			{
+				playerStanding = Assets.getPlayerLeftStanding ();
 				return playerLeftWalk.getCurrentFrame ();
+			}
 			else if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.up ) )
+			{
+				playerStanding = Assets.getPlayerUpStanding ();
 				return playerUpWalk.getCurrentFrame ();
+			}
 			else if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.down ) )
+			{
+				playerStanding = Assets.getPlayerDownStanding ();
 				return playerDownWalk.getCurrentFrame ();
+			}
 			else
-				return Assets.getPlayer ();
+			{
+				return playerStanding;
+			}
 		}
 	}
 
