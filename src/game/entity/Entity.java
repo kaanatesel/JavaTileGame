@@ -17,6 +17,7 @@ public abstract class Entity implements EntityBase {
 	protected int height, width;
 	protected Handler handler;
 	protected Rectangle bounds;
+	protected boolean active = true;
 
 	public Entity( float x, float y, int height, int width, Handler handler ) {
 		this.handler = handler;
@@ -40,6 +41,21 @@ public abstract class Entity implements EntityBase {
 	public abstract void tick();
 
 	public abstract void render( Graphics g );
+
+	public void hurt( int amt )
+	{
+		health -= amt;
+		if ( health <= 0 )
+		{
+			active = false;
+			die ();
+		}
+	}
+
+	public void die()
+	{
+		System.out.println ( this + " died " );
+	}
 
 	public boolean checkEntityCollision( float xOffset, float yOffsett )
 	{
