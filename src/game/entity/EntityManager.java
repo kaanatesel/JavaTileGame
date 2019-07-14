@@ -3,6 +3,7 @@ package game.entity;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 
 import game.Handler;
 import game.entity.player.Player;
@@ -44,9 +45,13 @@ public class EntityManager {
 
 	public void tick()
 	{
-		for ( Entity entity : entities )
+		Iterator<Entity> it = entities.iterator ();
+		while ( it.hasNext () )
 		{
-			entity.tick ();
+			Entity e = it.next ();
+			e.tick ();
+			if ( !e.active )
+				it.remove ();
 		}
 		entities.sort ( renderSorter );
 	}

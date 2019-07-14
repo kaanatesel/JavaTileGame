@@ -1,14 +1,77 @@
 package game.entity;
 
-public class HurtBehavior implements HurtAble {
+import java.awt.Rectangle;
 
-	public HurtBehavior() {
+import game.inputs.AvailableKey;
 
+public class HurtBehavior {
+
+	private Entity entity;
+	private int strength;
+	private int hitRange;
+	private long lastAttackTimer, attackCoolDown, attackTimer = attackCoolDown;
+
+	public HurtBehavior( Entity entity, int strength, int hitRange, long attackCoolDown ) {
+		this.strength = strength;
+		this.hitRange = hitRange;
+		this.entity = entity;
+		this.attackCoolDown = attackCoolDown;
 	}
 
-	@Override
-	public void hurt( int amt )
+	public void attack( int faceDirection )
 	{
+		attackTimer += System.currentTimeMillis () - lastAttackTimer;
+		lastAttackTimer = System.currentTimeMillis ();
+		if ( attackTimer < attackCoolDown )
+			return;
+
+		int arSize = hitRange;
+		Rectangle cb = entity.getCollisionBounds ( 0, 0 );
+		Rectangle ar = new Rectangle ();
+		ar.width = entity.getWidth ();
+		ar.height = entity.getHeight ();
+
+		if ( entity.getHandler ().getKeyManager ().getPressedKeys ().contains ( AvailableKey.hit ) )
+		{
+			if ( faceDirection == 0 )
+			{
+				ar.x = cb.x + cb.width / 2 - arSize / 2;
+				ar.y = cb.y - arSize;
+			}
+			else if ( faceDirection == 1 )
+			{
+				ar.x = cb.x + arSize;
+				ar.y = cb.y + cb.height / 2 - arSize / 2;
+			}
+			else if ( faceDirection == 2 )
+			{
+				ar.x = cb.x + cb.width / 2 - arSize / 2;
+				ar.y = cb.y + arSize;
+			}
+			else if ( faceDirection == 3 )
+			{
+				ar.x = cb.x - arSize;
+				ar.y = cb.y + cb.height / 2 - arSize / 2;
+			}
+			else
+			{
+				return;
+			}
+
+		}
+
+		for ( Entity e : entity.getHandler ().getWorld ().getEntityManager ().getEntities () )
+		{
+			if ( e.equals ( entity ) )
+			{
+				continue;
+			}
+			else if ( e.getCollisionBounds ( 0, 0 ).intersects ( ar ) )
+			{
+				e.hurt ( 1 );
+			}
+
+		}
 	}
 
 }

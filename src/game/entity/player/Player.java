@@ -3,9 +3,12 @@ package game.entity.player;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.nio.channels.GatheringByteChannel;
 
 import game.Handler;
 import game.entity.Entity;
+import game.entity.HurtAble;
+import game.entity.HurtBehavior;
 import game.entity.MoveAble;
 import game.entity.MoveBehaviour;
 import game.gfx.Animation;
@@ -14,14 +17,17 @@ import game.inputs.AvailableKey;
 import game.tiles.TileBase;
 import game.tiles.WaterTile;
 
-public class Player extends Entity implements MoveAble {
+public class Player extends Entity implements MoveAble, HurtAble {
 
 	private final int DEFAULT_SPEED = 5;
+	private final int DEFAULT_POWER = 2;
 	private float speed;
+	private int power;
 	// Behaviors
 	private MoveBehaviour moveBehaviour;
-	private BufferedImage playerStanding;
+	private HurtBehavior hurtBehavior;
 	// Animations
+	private BufferedImage playerStanding;
 	private Animation playerUpWalk;
 	private Animation playerDownWalk;
 	private Animation playerLeftWalk;
@@ -36,7 +42,9 @@ public class Player extends Entity implements MoveAble {
 	public Player( float x, float y, int height, int width, Handler handler ) {
 		super ( x, y, height, width, handler );
 		speed = DEFAULT_SPEED;
+		power = DEFAULT_POWER;
 		moveBehaviour = new MoveBehaviour ( this, speed );
+		hurtBehavior = new HurtBehavior ( this, power, 20, 300 );
 		bounds = new Rectangle ();
 
 		bounds.x = 18;
@@ -59,10 +67,20 @@ public class Player extends Entity implements MoveAble {
 	}
 
 	@Override
+	public void attack()
+	{
+		hurtBehavior.attack ( getFaceDirection () );
+	}
+
+	@Override
+	public int getFaceDirection()
+	{
+		return moveBehaviour.getEntityFace ();
+	}
+
+	@Override
 	public void move( float speed )
 	{
-		System.out.println ( moveBehaviour.getEntityFace () );
-
 		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.right ) )
 		{
 			moveBehaviour.moveRight ();
@@ -149,6 +167,7 @@ public class Player extends Entity implements MoveAble {
 	{
 
 		move ( speed );
+		attack ();
 		handler.getGameCamera ().centerOnEntity ( this );
 		playerDownSwim.tick ();
 		playerUpSwim.tick ();
@@ -183,4 +202,5 @@ public class Player extends Entity implements MoveAble {
 	{
 		return speed;
 	}
+
 }

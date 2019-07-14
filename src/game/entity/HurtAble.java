@@ -1,6 +1,7 @@
 package game.entity;
 
 public interface HurtAble {
+	void attack();
 
-	void hurt( int amt );
+	int getFaceDirection();
 }
