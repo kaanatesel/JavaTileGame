@@ -54,7 +54,6 @@ public abstract class Entity implements EntityBase {
 
 	public void die()
 	{
-		System.out.println ( this + " died " );
 	}
 
 	public boolean checkEntityCollision( float xOffset, float yOffsett )

@@ -2,6 +2,7 @@ package game;
 
 import game.helper.GameCamera;
 import game.inputs.KeyManager;
+import game.item.ItemManager;
 import game.world.World;
 
 public class Handler {

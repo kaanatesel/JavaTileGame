@@ -1,8 +1,12 @@
 package game.entity;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import game.inputs.AvailableKey;
+import game.tiles.TileBase;
+import game.tiles.WaterTile;
+import game.tiles.notSolid;
 
 public class HurtBehavior {
 
@@ -20,6 +24,9 @@ public class HurtBehavior {
 
 	public void attack( int faceDirection )
 	{
+		int currentTileX = (int) entity.getX () + (entity.getWidth () / 2);
+		int currentTileY = (int) entity.getY () + (entity.getHeight () / 2);
+
 		attackTimer += System.currentTimeMillis () - lastAttackTimer;
 		lastAttackTimer = System.currentTimeMillis ();
 		if ( attackTimer < attackCoolDown )
@@ -30,6 +37,12 @@ public class HurtBehavior {
 		Rectangle ar = new Rectangle ();
 		ar.width = entity.getWidth ();
 		ar.height = entity.getHeight ();
+
+		if ( entity.getHandler ().getWorld ().getTile ( currentTileX / TileBase.WIDTH,
+		        currentTileY / TileBase.HEIGHT ) instanceof WaterTile )
+		{
+			return;
+		}
 
 		if ( entity.getHandler ().getKeyManager ().getPressedKeys ().contains ( AvailableKey.hit ) )
 		{

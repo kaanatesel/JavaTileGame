@@ -3,7 +3,6 @@ package game.entity.player;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.nio.channels.GatheringByteChannel;
 
 import game.Handler;
 import game.entity.Entity;
@@ -14,6 +13,7 @@ import game.entity.MoveBehaviour;
 import game.gfx.Animation;
 import game.gfx.Assets;
 import game.inputs.AvailableKey;
+import game.inventory.Inventory;
 import game.tiles.TileBase;
 import game.tiles.WaterTile;
 
@@ -21,13 +21,20 @@ public class Player extends Entity implements MoveAble, HurtAble {
 
 	private final int DEFAULT_SPEED = 5;
 	private final int DEFAULT_POWER = 2;
+	private final int DEFAULT_HIT_SPEED = 300;
 	private float speed;
 	private int power;
 	// Behaviors
 	private MoveBehaviour moveBehaviour;
 	private HurtBehavior hurtBehavior;
+	private Inventory inventory;
 	// Animations
 	private BufferedImage playerStanding;
+
+	private Animation playerLeftAttack;
+	private Animation playerRightAttack;
+	private Animation playerUpAttack;
+	private Animation playerDowntAttack;
 	private Animation playerUpWalk;
 	private Animation playerDownWalk;
 	private Animation playerLeftWalk;
@@ -37,7 +44,7 @@ public class Player extends Entity implements MoveAble, HurtAble {
 	private Animation playerLeftSwim;
 	private Animation playerRightSwim;
 
-	public BufferedImage[] a;
+	BufferedImage oldImg = playerStanding;
 
 	public Player( float x, float y, int height, int width, Handler handler ) {
 		super ( x, y, height, width, handler );
@@ -45,6 +52,8 @@ public class Player extends Entity implements MoveAble, HurtAble {
 		power = DEFAULT_POWER;
 		moveBehaviour = new MoveBehaviour ( this, speed );
 		hurtBehavior = new HurtBehavior ( this, power, 20, 300 );
+		inventory = new Inventory ( handler );
+
 		bounds = new Rectangle ();
 
 		bounds.x = 18;
@@ -64,11 +73,31 @@ public class Player extends Entity implements MoveAble, HurtAble {
 		playerLeftSwim = new Animation ( 300, Assets.getPlayerSwimmingLeft () );
 		playerRightSwim = new Animation ( 300, Assets.getPlayerSwimmingRight () );
 
+		playerLeftAttack = new Animation ( 300, Assets.getPlayerLeftAttack () );
+		playerRightAttack = new Animation ( 300, Assets.getPlayerRightAttack () );
+		playerUpAttack = new Animation ( 300, Assets.getPlayerUpAttack () );
+		playerDowntAttack = new Animation ( 300, Assets.getPlayerDownAttack () );
 	}
 
 	@Override
 	public void attack()
 	{
+
+		int currentTileX = (int) getX () + (getWidth () / 2);
+		int currentTileY = (int) getY () + (getHeight () / 2);
+
+		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.hit ) && !(handler.getWorld ()
+		        .getTile ( currentTileX / TileBase.WIDTH, currentTileY / TileBase.HEIGHT ) instanceof WaterTile) )
+		{
+			if ( getFaceDirection () == 0 )
+				playerStanding = playerUpAttack.getCurrentFrame ();
+			if ( getFaceDirection () == 1 )
+				playerStanding = playerRightAttack.getCurrentFrame ();
+			if ( getFaceDirection () == 2 )
+				playerStanding = playerDowntAttack.getCurrentFrame ();
+			if ( getFaceDirection () == 3 )
+				playerStanding = playerLeftAttack.getCurrentFrame ();
+		}
 		hurtBehavior.attack ( getFaceDirection () );
 	}
 
@@ -169,6 +198,7 @@ public class Player extends Entity implements MoveAble, HurtAble {
 		move ( speed );
 		attack ();
 		handler.getGameCamera ().centerOnEntity ( this );
+		inventory.tick ();
 		playerDownSwim.tick ();
 		playerUpSwim.tick ();
 		playerLeftSwim.tick ();
@@ -177,6 +207,10 @@ public class Player extends Entity implements MoveAble, HurtAble {
 		playerUpWalk.tick ();
 		playerLeftWalk.tick ();
 		playerRightWalk.tick ();
+		playerLeftAttack.tick ();
+		playerRightAttack.tick ();
+		playerUpAttack.tick ();
+		playerDowntAttack.tick ();
 	}
 
 	@Override
@@ -201,6 +235,26 @@ public class Player extends Entity implements MoveAble, HurtAble {
 	public float getSpeed()
 	{
 		return speed;
+	}
+
+	public BufferedImage getPlayerStanding()
+	{
+		return playerStanding;
+	}
+
+	public void setPlayerStanding( BufferedImage playerStanding )
+	{
+		this.playerStanding = playerStanding;
+	}
+
+	public Inventory getInventory()
+	{
+		return inventory;
+	}
+
+	public void setInventory( Inventory inventory )
+	{
+		this.inventory = inventory;
 	}
 
 }

@@ -11,7 +11,8 @@ public class Assets {
 	private static BufferedImage dust;
 	private static BufferedImage rock;
 	private static BufferedImage stone;
-
+	private static BufferedImage woodItem;
+	private static BufferedImage stoneItem;
 	// Player Animations
 	private static BufferedImage playerLeftStanding;
 	private static BufferedImage playerUpStanding;
@@ -29,6 +30,10 @@ public class Assets {
 	private static BufferedImage[] playerSwimmingUp;
 	private static BufferedImage[] playerSwimmingRight;
 	private static BufferedImage[] playerSwimmingLeft;
+	private static BufferedImage[] playerLeftAttack;
+	private static BufferedImage[] playerRightAttack;
+	private static BufferedImage[] playerDownAttack;
+	private static BufferedImage[] playerUpAttack;
 
 	public static void init()
 	{
@@ -49,6 +54,15 @@ public class Assets {
 		playerSwimmingUp = new BufferedImage[2];
 		playerSwimmingRight = new BufferedImage[2];
 		playerSwimmingLeft = new BufferedImage[2];
+
+		playerLeftAttack = new BufferedImage[2];
+		playerRightAttack = new BufferedImage[2];
+		playerDownAttack = new BufferedImage[2];
+		playerUpAttack = new BufferedImage[2];
+
+		// Items
+		stoneItem = sheet.crop ( CROP_WIDTH * 4, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
+		woodItem = sheet.crop ( CROP_WIDTH * 4, 0, CROP_WIDTH, CROP_HEIGHT );
 
 		// Player
 		playerRightStanding = sheet.crop ( CROP_WIDTH * 2, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
@@ -86,6 +100,19 @@ public class Assets {
 		playerSwimmingLeft[0] = sheet.crop ( CROP_WIDTH * 6, 0, CROP_WIDTH, CROP_HEIGHT );
 		playerSwimmingLeft[1] = sheet.crop ( CROP_WIDTH * 6, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
 
+		// Player Attack
+		playerLeftAttack[0] = sheet.crop ( 0, CROP_HEIGHT * 4, CROP_WIDTH, CROP_HEIGHT );
+		playerLeftAttack[1] = sheet.crop ( 0, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
+
+		playerRightAttack[0] = sheet.crop ( CROP_WIDTH, CROP_HEIGHT * 4, CROP_WIDTH, CROP_HEIGHT );
+		playerRightAttack[1] = sheet.crop ( CROP_WIDTH * 2, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
+
+		playerDownAttack[0] = sheet.crop ( CROP_WIDTH * 2, CROP_HEIGHT * 4, CROP_WIDTH, CROP_HEIGHT );
+		playerDownAttack[1] = sheet.crop ( 0, 0, CROP_WIDTH, CROP_HEIGHT );
+
+		playerUpAttack[0] = sheet.crop ( CROP_WIDTH * 3, CROP_HEIGHT * 4, CROP_WIDTH, CROP_HEIGHT );
+		playerUpAttack[1] = sheet.crop ( CROP_WIDTH * 6, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
+
 	}
 
 	// GETTERS AND SETTERS
@@ -93,6 +120,46 @@ public class Assets {
 	public static BufferedImage getWater()
 	{
 		return water;
+	}
+
+	public static BufferedImage[] getPlayerLeftAttack()
+	{
+		return playerLeftAttack;
+	}
+
+	public static void setPlayerLeftAttack( BufferedImage[] playerLeftAttack )
+	{
+		Assets.playerLeftAttack = playerLeftAttack;
+	}
+
+	public static BufferedImage[] getPlayerRightAttack()
+	{
+		return playerRightAttack;
+	}
+
+	public static void setPlayerRightAttack( BufferedImage[] playerRightAttack )
+	{
+		Assets.playerRightAttack = playerRightAttack;
+	}
+
+	public static BufferedImage[] getPlayerDownAttack()
+	{
+		return playerDownAttack;
+	}
+
+	public static void setPlayerDownAttack( BufferedImage[] playerDownAttack )
+	{
+		Assets.playerDownAttack = playerDownAttack;
+	}
+
+	public static BufferedImage[] getPlayerUpAttack()
+	{
+		return playerUpAttack;
+	}
+
+	public static void setPlayerUpAttack( BufferedImage[] playerUpAttack )
+	{
+		Assets.playerUpAttack = playerUpAttack;
 	}
 
 	public static void setWater( BufferedImage water )
@@ -198,6 +265,26 @@ public class Assets {
 	public static void setDust( BufferedImage dust )
 	{
 		Assets.dust = dust;
+	}
+
+	public static BufferedImage getWoodItem()
+	{
+		return woodItem;
+	}
+
+	public static void setWoodItem( BufferedImage woodItem )
+	{
+		Assets.woodItem = woodItem;
+	}
+
+	public static BufferedImage getstoneItem()
+	{
+		return stoneItem;
+	}
+
+	public static void setstoneItem( BufferedImage rockItem )
+	{
+		Assets.stoneItem = rockItem;
 	}
 
 	public static BufferedImage getRock()

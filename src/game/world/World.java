@@ -8,6 +8,7 @@ import game.entity.player.Player;
 import game.entity.staticEntity.Stone;
 import game.entity.staticEntity.Tree;
 import game.gfx.LoadFileAsString;
+import game.item.ItemManager;
 import game.tiles.TileBase;
 
 public class World {
@@ -19,6 +20,7 @@ public class World {
 	private Player player;
 
 	private EntityManager entityManager;
+	private ItemManager itemManager;
 
 	public World( Handler handler, String path ) {
 		this.handler = handler;
@@ -27,9 +29,18 @@ public class World {
 		player = new Player ( spawnX, spawnY, TileBase.WIDTH, TileBase.HEIGHT, handler );
 
 		entityManager = new EntityManager ( handler, player );
+		itemManager = new ItemManager ( handler );
 
 		entityManager.addEntity ( new Tree ( 200, 200, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
+		entityManager.addEntity ( new Tree ( 850, 600, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
+		entityManager.addEntity ( new Tree ( 850, 300, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
+		entityManager.addEntity ( new Tree ( 1000, 600, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
+		entityManager.addEntity ( new Tree ( 690, 400, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
 		entityManager.addEntity ( new Stone ( 400, 100, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
+		entityManager.addEntity ( new Stone ( 300, 100, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
+		entityManager.addEntity ( new Stone ( 120, 450, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
+		entityManager.addEntity ( new Stone ( 800, 120, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
+		entityManager.addEntity ( new Stone ( 390, 950, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
 
 		entityManager.getPlayer ().setX ( spawnX );
 		entityManager.getPlayer ().setY ( spawnY );
@@ -39,6 +50,7 @@ public class World {
 	public void tick()
 	{
 		entityManager.tick ();
+		itemManager.tick ();
 	}
 
 	public void render( Graphics g )
@@ -51,8 +63,8 @@ public class World {
 				        (int) (y * TileBase.HEIGHT - handler.getGameCamera ().getyOffset ()) );
 			}
 		}
+		itemManager.render ( g );
 		entityManager.render ( g );
-		// collisionDetection.render ( g );
 
 	}
 
@@ -93,7 +105,6 @@ public class World {
 	{
 		return width;
 	}
-	
 
 	public Player getPlayer()
 	{
@@ -153,6 +164,16 @@ public class World {
 	public int getSpawnY()
 	{
 		return spawnY;
+	}
+
+	public ItemManager getItemManager()
+	{
+		return itemManager;
+	}
+
+	public void setItemManager( ItemManager itemManager )
+	{
+		this.itemManager = itemManager;
 	}
 
 	public void setSpawnY( int spawnY )

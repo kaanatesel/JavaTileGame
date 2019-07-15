@@ -3,7 +3,8 @@ package game.inputs;
 import java.awt.event.KeyEvent;
 
 public enum AvailableKey {
-	down(KeyEvent.VK_S), left(KeyEvent.VK_A), other(-1), right(KeyEvent.VK_D), up(KeyEvent.VK_W), hit(KeyEvent.VK_L);
+	down(KeyEvent.VK_S), left(KeyEvent.VK_A), other(-1), right(KeyEvent.VK_D), up(KeyEvent.VK_W), hit(KeyEvent.VK_L),
+	inventory(KeyEvent.VK_E);
 	public static final AvailableKey getKeyByValue( int value )
 	{
 

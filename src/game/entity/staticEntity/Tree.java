@@ -5,13 +5,12 @@ import java.awt.Graphics;
 import game.Handler;
 import game.entity.Entity;
 import game.gfx.Assets;
+import game.item.Item;
 
 public class Tree extends Entity {
 
 	public Tree( float x, float y, int height, int width, Handler handler ) {
 		super ( x, y, height, width, handler );
-
-		System.out.println ( bounds );
 
 		bounds.x = 48;
 		bounds.y = (int) (height / 2);
@@ -28,6 +27,24 @@ public class Tree extends Entity {
 	@Override
 	public void tick()
 	{
+	}
+
+	@Override
+	public void die()
+	{
+		int ranItem = (int) (Math.random () * 5) + 1;
+		int minXrange = (int) x;
+		int maxXrange = (int) x + width;
+		int minYrange = (int) y;
+		int maxYrange = (int) y + height;
+
+		for ( int i = 0; i < ranItem; i++ )
+		{
+			int ranX = (int) (Math.random () * ((maxXrange - minXrange) + 1)) + minXrange;
+			int ranY = (int) (Math.random () * ((maxYrange - minYrange) + 1)) + minYrange;
+			handler.getWorld ().getItemManager ().addItem ( Item.woodItem.createNew ( ranX, ranY ) );
+		}
+
 	}
 
 	@Override

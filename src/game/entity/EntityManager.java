@@ -13,6 +13,7 @@ public class EntityManager {
 	private ArrayList<Entity> entities;
 	private Handler handler;
 	private Player player;
+	
 	private Comparator<Entity> renderSorter = new Comparator<Entity> ()
 	{
 
