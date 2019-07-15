@@ -8,6 +8,8 @@ import game.tiles.TileBase;
 import game.tiles.WaterTile;
 import game.tiles.notSolid;
 
+import game.inputs.AvailableKey;
+
 public class HurtBehavior {
 
 	private Entity entity;

@@ -3,6 +3,7 @@ package game.entity.player;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.nio.channels.GatheringByteChannel;
 
 import game.Handler;
 import game.entity.Entity;
@@ -35,6 +36,7 @@ public class Player extends Entity implements MoveAble, HurtAble {
 	private Animation playerRightAttack;
 	private Animation playerUpAttack;
 	private Animation playerDowntAttack;
+
 	private Animation playerUpWalk;
 	private Animation playerDownWalk;
 	private Animation playerLeftWalk;
