@@ -63,8 +63,10 @@ public class World {
 				        (int) (y * TileBase.HEIGHT - handler.getGameCamera ().getyOffset ()) );
 			}
 		}
-		itemManager.render ( g );
+
 		entityManager.render ( g );
+
+		itemManager.render ( g );
 
 	}
 

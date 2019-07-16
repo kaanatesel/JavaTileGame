@@ -3,7 +3,6 @@ package game.entity.player;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.nio.channels.GatheringByteChannel;
 
 import game.Handler;
 import game.entity.Entity;
@@ -75,10 +74,10 @@ public class Player extends Entity implements MoveAble, HurtAble {
 		playerLeftSwim = new Animation ( 300, Assets.getPlayerSwimmingLeft () );
 		playerRightSwim = new Animation ( 300, Assets.getPlayerSwimmingRight () );
 
-		playerLeftAttack = new Animation ( 300, Assets.getPlayerLeftAttack () );
-		playerRightAttack = new Animation ( 300, Assets.getPlayerRightAttack () );
-		playerUpAttack = new Animation ( 300, Assets.getPlayerUpAttack () );
-		playerDowntAttack = new Animation ( 300, Assets.getPlayerDownAttack () );
+		playerLeftAttack = new Animation ( DEFAULT_HIT_SPEED, Assets.getPlayerLeftAttack () );
+		playerRightAttack = new Animation ( DEFAULT_HIT_SPEED, Assets.getPlayerRightAttack () );
+		playerUpAttack = new Animation ( DEFAULT_HIT_SPEED, Assets.getPlayerUpAttack () );
+		playerDowntAttack = new Animation ( DEFAULT_HIT_SPEED, Assets.getPlayerDownAttack () );
 	}
 
 	@Override
@@ -220,6 +219,11 @@ public class Player extends Entity implements MoveAble, HurtAble {
 	{
 		g.drawImage ( getCurrentAnimation (), (int) (x - handler.getGameCamera ().getxOffset ()),
 		        (int) (y - handler.getGameCamera ().getyOffset ()), width, height, null );
+	}
+
+	public void postRender( Graphics g )
+	{
+		inventory.render ( g );
 	}
 
 	public Rectangle getBounds()

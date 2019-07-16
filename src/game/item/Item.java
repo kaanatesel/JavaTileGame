@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import game.Handler;
 import game.gfx.Assets;
+import game.gfx.DrawString;
 
 public class Item implements ItemBase {
 
@@ -40,6 +41,7 @@ public class Item implements ItemBase {
 		}
 	}
 
+	// for game
 	@Override
 	public void render( Graphics g )
 	{
@@ -48,6 +50,15 @@ public class Item implements ItemBase {
 			g.drawImage ( texture, (int) (x - handler.getGameCamera ().getxOffset ()),
 			        (int) (y - handler.getGameCamera ().getyOffset ()), ITEM_WIDTH, ITEM_HEIGHT, null );
 		}
+	}
+
+	// For inventory
+	public void render( Graphics g, int x, int y )
+	{
+		g.drawImage ( texture, x - 210, y - 55, 80, 80, null );
+		DrawString.drawText ( g, "> " + name + " <", x, y, 30 );
+		DrawString.drawText ( g, String.valueOf ( countInInventory ), x + 300, y, 30 );
+
 	}
 
 	public Item createNew( int x, int y )

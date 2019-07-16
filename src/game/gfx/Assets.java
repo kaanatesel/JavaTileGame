@@ -6,6 +6,8 @@ public class Assets {
 
 	private final static int CROP_WIDTH = 50, CROP_HEIGHT = 50;
 
+	private static BufferedImage inventory;
+
 	private static BufferedImage water;
 	private static BufferedImage tree;
 	private static BufferedImage dust;
@@ -44,6 +46,8 @@ public class Assets {
 		rock = sheet.crop ( 0, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
 		tree = sheet.crop ( CROP_WIDTH * 3, 0, CROP_WIDTH, CROP_HEIGHT );
 		stone = sheet.crop ( CROP_WIDTH * 3, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
+
+		inventory = sheet.crop ( 0, CROP_HEIGHT * 5, CROP_WIDTH * 4, CROP_HEIGHT * 4 );
 
 		playerWalkingDown = new BufferedImage[2];
 		playerWalkingUp = new BufferedImage[2];
@@ -150,6 +154,16 @@ public class Assets {
 	public static void setPlayerDownAttack( BufferedImage[] playerDownAttack )
 	{
 		Assets.playerDownAttack = playerDownAttack;
+	}
+
+	public static BufferedImage getInventory()
+	{
+		return inventory;
+	}
+
+	public static void setInventory( BufferedImage inventory )
+	{
+		Assets.inventory = inventory;
 	}
 
 	public static BufferedImage[] getPlayerUpAttack()

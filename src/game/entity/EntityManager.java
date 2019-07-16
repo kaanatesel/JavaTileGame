@@ -63,6 +63,8 @@ public class EntityManager {
 		{
 			entity.render ( g );
 		}
+		
+		player.postRender ( g );
 	}
 
 	// Getters and Setter
