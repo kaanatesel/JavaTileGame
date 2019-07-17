@@ -10,6 +10,7 @@ import game.entity.staticEntity.Tree;
 import game.gfx.LoadFileAsString;
 import game.item.ItemManager;
 import game.tiles.TileBase;
+import game.tiles.WaterTile;
 
 public class World {
 
@@ -31,16 +32,31 @@ public class World {
 		entityManager = new EntityManager ( handler, player );
 		itemManager = new ItemManager ( handler );
 
-		entityManager.addEntity ( new Tree ( 200, 200, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
-		entityManager.addEntity ( new Tree ( 850, 600, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
-		entityManager.addEntity ( new Tree ( 850, 300, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
-		entityManager.addEntity ( new Tree ( 1000, 600, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
-		entityManager.addEntity ( new Tree ( 690, 400, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
-		entityManager.addEntity ( new Stone ( 400, 100, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
-		entityManager.addEntity ( new Stone ( 300, 100, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
-		entityManager.addEntity ( new Stone ( 120, 450, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
-		entityManager.addEntity ( new Stone ( 800, 120, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
-		entityManager.addEntity ( new Stone ( 390, 950, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
+		int staticEntityNumber = (int) ((Math.random () * 120) + 60);
+
+		for ( int i = 0; i < staticEntityNumber; i++ )
+		{
+			int randomX = (int) ((Math.random () * TileBase.WIDTH * 39) + TileBase.WIDTH);
+			int randomY = (int) ((Math.random () * TileBase.HEIGHT * 39) + TileBase.HEIGHT);
+
+			if ( !(getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT ) instanceof WaterTile) )
+			{
+				entityManager
+				        .addEntity ( new Tree ( randomX, randomY, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
+
+			}
+		}
+
+		for ( int i = 0; i < staticEntityNumber; i++ )
+		{
+			int randomX = (int) ((Math.random () * TileBase.WIDTH * 39) + TileBase.WIDTH);
+			int randomY = (int) ((Math.random () * TileBase.HEIGHT * 39) + TileBase.HEIGHT);
+
+			if ( !(getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT ) instanceof WaterTile) )
+			{
+				entityManager.addEntity ( new Stone ( randomX, randomY, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
+			}
+		}
 
 		entityManager.getPlayer ().setX ( spawnX );
 		entityManager.getPlayer ().setY ( spawnY );
@@ -55,18 +71,27 @@ public class World {
 
 	public void render( Graphics g )
 	{
-		for ( int x = 0; x < width; x++ )
+
+		int xStart = (int) Math.max ( 0, handler.getGameCamera ().getxOffset () / TileBase.HEIGHT );
+		int xEnd = (int) Math.min ( width,
+		        (handler.getGameCamera ().getxOffset () + handler.getWidth ()) / TileBase.WIDTH + 1 );
+		int yStart = (int) Math.max ( 0, handler.getGameCamera ().getyOffset () / TileBase.HEIGHT );
+
+		int yEnd = (int) Math.min ( width,
+		        (handler.getGameCamera ().getyOffset () + handler.getHeight ()) / TileBase.HEIGHT + 1 );
+
+		for ( int y = yStart; y < yEnd; y++ )
 		{
-			for ( int y = 0; y < heigth; y++ )
+			for ( int x = xStart; x < xEnd; x++ )
 			{
 				getTile ( x, y ).render ( g, (int) (x * TileBase.WIDTH - handler.getGameCamera ().getxOffset ()),
 				        (int) (y * TileBase.HEIGHT - handler.getGameCamera ().getyOffset ()) );
 			}
 		}
 
-		entityManager.render ( g );
-
 		itemManager.render ( g );
+
+		entityManager.render ( g );
 
 	}
 

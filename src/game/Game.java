@@ -8,6 +8,7 @@ import game.entity.player.Player;
 import game.gfx.Assets;
 import game.helper.GameCamera;
 import game.inputs.KeyManager;
+import game.inputs.MouseEventListener;
 import game.state.GameState;
 import game.state.State;
 
@@ -25,6 +26,7 @@ public class Game implements Runnable {
 	private String title;
 
 	private KeyManager keyManager;
+	private MouseEventListener mouseEventListener;
 	private GameCamera gameCamera;
 
 	private GameState gameState;
@@ -37,6 +39,7 @@ public class Game implements Runnable {
 		this.title = title;
 
 		keyManager = new KeyManager ();
+		mouseEventListener = new MouseEventListener ();
 		gameCamera = new GameCamera ( 0, 0, handler );
 	}
 
@@ -45,9 +48,14 @@ public class Game implements Runnable {
 		display = new Display ( title, width, height );
 
 		display.getJFrame ().addKeyListener ( keyManager );
+		display.getJFrame ().addMouseListener ( mouseEventListener );
+		display.getJFrame ().addMouseMotionListener ( mouseEventListener );
+
+		display.getCanvas ().addMouseListener ( mouseEventListener );
+		display.getCanvas ().addMouseMotionListener ( mouseEventListener );
 
 		Assets.init ();
-		
+
 		handler = new Handler ( this );
 		gameCamera = new GameCamera ( 0, 0, handler );
 		// States
@@ -55,7 +63,6 @@ public class Game implements Runnable {
 
 		State.setCurrentState ( gameState );
 
-		
 	}
 
 	@Override
