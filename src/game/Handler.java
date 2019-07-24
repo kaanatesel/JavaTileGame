@@ -2,13 +2,15 @@ package game;
 
 import game.helper.GameCamera;
 import game.inputs.KeyManager;
-import game.item.ItemManager;
+import game.inputs.MouseEventListener;
+import game.world.Menu;
 import game.world.World;
 
 public class Handler {
 
 	private World world;
 	private Game game;
+	private Menu menu;
 
 	public Handler( Game game ) {
 		this.game = game;
@@ -52,6 +54,21 @@ public class Handler {
 	public void setGame( Game game )
 	{
 		this.game = game;
+	}
+
+	public MouseEventListener getMouseEventListener()
+	{
+		return game.getMouseEventListener ();
+	}
+
+	public Menu getMenu()
+	{
+		return menu;
+	}
+
+	public void setMenu( Menu menu )
+	{
+		this.menu = menu;
 	}
 
 }

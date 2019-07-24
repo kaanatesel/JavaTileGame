@@ -36,6 +36,11 @@ public class Assets {
 	private static BufferedImage[] playerRightAttack;
 	private static BufferedImage[] playerDownAttack;
 	private static BufferedImage[] playerUpAttack;
+	// Menu
+	private static BufferedImage background;
+	private static BufferedImage[] startBtn;
+	private static BufferedImage[] exitBtn;
+	private static BufferedImage[] optionsBtn;
 
 	public static void init()
 	{
@@ -63,6 +68,22 @@ public class Assets {
 		playerRightAttack = new BufferedImage[2];
 		playerDownAttack = new BufferedImage[2];
 		playerUpAttack = new BufferedImage[2];
+
+		// Menu
+		startBtn = new BufferedImage[2];
+		exitBtn = new BufferedImage[2];
+		optionsBtn = new BufferedImage[2];
+
+		background = sheet.crop ( CROP_WIDTH * 7, 0, CROP_WIDTH * 5, CROP_HEIGHT * 4 );
+
+		startBtn[0] = sheet.crop ( CROP_WIDTH * 4, CROP_HEIGHT * 4, CROP_WIDTH * 2, CROP_HEIGHT );
+		startBtn[1] = sheet.crop ( CROP_WIDTH * 4, CROP_HEIGHT * 5, CROP_WIDTH * 2, CROP_HEIGHT );
+
+		optionsBtn[0] = sheet.crop ( CROP_WIDTH * 6, CROP_HEIGHT * 4, CROP_WIDTH * 2, CROP_HEIGHT );
+		optionsBtn[1] = sheet.crop ( CROP_WIDTH * 6, CROP_HEIGHT * 5, CROP_WIDTH * 2, CROP_HEIGHT );
+
+		exitBtn[0] = sheet.crop ( CROP_WIDTH * 8, CROP_HEIGHT * 4, CROP_WIDTH * 2, CROP_HEIGHT );
+		exitBtn[1] = sheet.crop ( CROP_WIDTH * 8, CROP_HEIGHT * 5, CROP_WIDTH * 2, CROP_HEIGHT );
 
 		// Items
 		stoneItem = sheet.crop ( CROP_WIDTH * 4, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
@@ -400,5 +421,26 @@ public class Assets {
 	{
 		Assets.stone = stone;
 	}
+
+	public static BufferedImage getBackground()
+	{
+		return background;
+	}
+
+	public static BufferedImage[] getStartBtn()
+	{
+		return startBtn;
+	}
+
+	public static BufferedImage[] getExitBtn()
+	{
+		return exitBtn;
+	}
+
+	public static BufferedImage[] getOptionsBtn()
+	{
+		return optionsBtn;
+	}
+	
 
 }

@@ -9,6 +9,8 @@ import game.entity.staticEntity.Stone;
 import game.entity.staticEntity.Tree;
 import game.gfx.LoadFileAsString;
 import game.item.ItemManager;
+import game.tiles.DustTile;
+import game.tiles.RockTile;
 import game.tiles.TileBase;
 import game.tiles.WaterTile;
 
@@ -36,10 +38,10 @@ public class World {
 
 		for ( int i = 0; i < staticEntityNumber; i++ )
 		{
-			int randomX = (int) ((Math.random () * TileBase.WIDTH * 39) + TileBase.WIDTH);
-			int randomY = (int) ((Math.random () * TileBase.HEIGHT * 39) + TileBase.HEIGHT);
+			int randomX = (int) ((Math.random () * TileBase.WIDTH * 39) + TileBase.WIDTH * 2);
+			int randomY = (int) ((Math.random () * TileBase.HEIGHT * 39) + TileBase.HEIGHT * 2);
 
-			if ( !(getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT ) instanceof WaterTile) )
+			if ( (getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT ) instanceof DustTile) )
 			{
 				entityManager
 				        .addEntity ( new Tree ( randomX, randomY, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
@@ -52,7 +54,7 @@ public class World {
 			int randomX = (int) ((Math.random () * TileBase.WIDTH * 39) + TileBase.WIDTH);
 			int randomY = (int) ((Math.random () * TileBase.HEIGHT * 39) + TileBase.HEIGHT);
 
-			if ( !(getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT ) instanceof WaterTile) )
+			if ( (getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT ) instanceof DustTile) )
 			{
 				entityManager.addEntity ( new Stone ( randomX, randomY, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
 			}

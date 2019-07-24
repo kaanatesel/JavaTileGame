@@ -4,12 +4,12 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import game.display.Display;
-import game.entity.player.Player;
 import game.gfx.Assets;
 import game.helper.GameCamera;
 import game.inputs.KeyManager;
 import game.inputs.MouseEventListener;
 import game.state.GameState;
+import game.state.MenuState;
 import game.state.State;
 
 public class Game implements Runnable {
@@ -30,6 +30,7 @@ public class Game implements Runnable {
 	private GameCamera gameCamera;
 
 	private GameState gameState;
+	private MenuState menuState;
 
 	private Handler handler;
 
@@ -60,8 +61,9 @@ public class Game implements Runnable {
 		gameCamera = new GameCamera ( 0, 0, handler );
 		// States
 		gameState = new GameState ( handler );
+		menuState = new MenuState ( handler );
 
-		State.setCurrentState ( gameState );
+		State.setCurrentState ( menuState );
 
 	}
 
@@ -197,6 +199,21 @@ public class Game implements Runnable {
 	public void setGameCamera( GameCamera gameCamera )
 	{
 		this.gameCamera = gameCamera;
+	}
+
+	public MouseEventListener getMouseEventListener()
+	{
+		return mouseEventListener;
+	}
+
+	public State getGameState()
+	{
+		return gameState;
+	}
+
+	public State getMenuState()
+	{
+		return menuState;
 	}
 
 }
