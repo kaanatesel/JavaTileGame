@@ -13,6 +13,7 @@ public class UIObjectManager {
 
 	private StartBtn startBtn;
 	private ExitBtn exitBtn;
+	private OptionBtn optionBtn;
 
 	public UIObjectManager( Handler handler ) {
 		this.handler = handler;
@@ -25,9 +26,11 @@ public class UIObjectManager {
 	private void init()
 	{
 		startBtn = new StartBtn ( handler, Assets.getStartBtn (), 450, 225, 300, 150 );
-		exitBtn = new ExitBtn ( handler, Assets.getExitBtn (), 450, 350, 300, 150 );
+		optionBtn = new OptionBtn ( handler, Assets.getOptionsBtn (), 450, 350, 300, 150 );
+		exitBtn = new ExitBtn ( handler, Assets.getExitBtn (), 450, 475, 300, 150 );
 
 		uiObjects.add ( startBtn );
+		uiObjects.add ( optionBtn );
 		uiObjects.add ( exitBtn );
 
 	}
@@ -38,6 +41,7 @@ public class UIObjectManager {
 		{
 			uiObject.tick ();
 		}
+
 	}
 
 	public void render( Graphics g )
@@ -46,6 +50,8 @@ public class UIObjectManager {
 		{
 			uiObject.render ( g );
 		}
+
+		optionBtn.postRender ( g );
 	}
 
 }

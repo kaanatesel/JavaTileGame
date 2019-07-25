@@ -43,9 +43,9 @@ public class MouseEventListener implements MouseListener, MouseMotionListener {
 	public void mouseReleased( MouseEvent e )
 	{
 		if ( e.getButton () == MouseEvent.BUTTON1 )
-			leftButton = true;
+			leftButton = false;
 		else if ( e.getButton () == MouseEvent.BUTTON3 )
-			rightButton = true;
+			rightButton = false;
 	}
 
 	@Override

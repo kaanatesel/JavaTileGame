@@ -10,9 +10,7 @@ import game.entity.staticEntity.Tree;
 import game.gfx.LoadFileAsString;
 import game.item.ItemManager;
 import game.tiles.DustTile;
-import game.tiles.RockTile;
 import game.tiles.TileBase;
-import game.tiles.WaterTile;
 
 public class World {
 

@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import game.Handler;
-import game.state.State;
 
 public class ExitBtn extends UIObjectBase implements ClickAble {
 

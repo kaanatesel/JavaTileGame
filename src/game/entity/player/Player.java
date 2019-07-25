@@ -162,6 +162,7 @@ public class Player extends Entity implements MoveAble, HurtAble {
 			{
 				return playerStanding;
 			}
+
 		}
 		else
 		{
