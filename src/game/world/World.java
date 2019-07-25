@@ -38,10 +38,11 @@ public class World {
 
 		for ( int i = 0; i < staticEntityNumber; i++ )
 		{
-			int randomX = (int) ((Math.random () * TileBase.WIDTH * 39) + TileBase.WIDTH * 2);
-			int randomY = (int) ((Math.random () * TileBase.HEIGHT * 39) + TileBase.HEIGHT * 2);
+			int randomX = (int) ((Math.random () * TileBase.WIDTH * 37) + TileBase.WIDTH);
+			int randomY = (int) ((Math.random () * TileBase.HEIGHT * 37) + TileBase.HEIGHT);
 
-			if ( (getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT ) instanceof DustTile) )
+			if ( (getTile ( randomX / TileBase.WIDTH + 2, randomY / TileBase.HEIGHT + 2 ) instanceof DustTile)
+			        && (getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT + 2 ) instanceof DustTile) )
 			{
 				entityManager
 				        .addEntity ( new Tree ( randomX, randomY, TileBase.HEIGHT * 2, TileBase.WIDTH * 2, handler ) );
@@ -54,7 +55,8 @@ public class World {
 			int randomX = (int) ((Math.random () * TileBase.WIDTH * 39) + TileBase.WIDTH);
 			int randomY = (int) ((Math.random () * TileBase.HEIGHT * 39) + TileBase.HEIGHT);
 
-			if ( (getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT ) instanceof DustTile) )
+			if ( (getTile ( randomX / TileBase.WIDTH, randomY / TileBase.HEIGHT ) instanceof DustTile)
+			        && (getTile ( randomX / TileBase.WIDTH + 1, randomY / TileBase.HEIGHT + 1 ) instanceof DustTile) )
 			{
 				entityManager.addEntity ( new Stone ( randomX, randomY, TileBase.HEIGHT, TileBase.WIDTH, handler ) );
 			}

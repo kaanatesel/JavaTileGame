@@ -15,6 +15,8 @@ public class Stone extends Entity {
 		bounds.y = (int) (height / 2);
 		bounds.width = width - 8;
 		bounds.height = (int) (height - height / 2f);
+
+		this.setHealth ( 40 );
 	}
 
 	@Override
