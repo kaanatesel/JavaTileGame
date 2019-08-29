@@ -25,7 +25,9 @@ public class Inventory {
 	public void tick()
 	{
 		if ( handler.getKeyManager ().getPressedKeys ().contains ( AvailableKey.inventory ) )
+		{
 			active = !active;
+		}
 		if ( !active )
 			return;
 	}
@@ -51,13 +53,18 @@ public class Inventory {
 
 		g.drawImage ( Assets.getInventory (), renderX, renderY, 800, 800, null );
 
-		int y = 300;
+		int y = 364;
 
 		for ( Item item : inventoryItems )
 		{
 			item.render ( g, 370, y );
-			y += 100;
+			y += 132;
 		}
+	}
+
+	public ArrayList<Item> getInventoryItems()
+	{
+		return inventoryItems;
 	}
 
 }

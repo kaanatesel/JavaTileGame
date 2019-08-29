@@ -14,6 +14,7 @@ import game.gfx.Animation;
 import game.gfx.Assets;
 import game.inputs.AvailableKey;
 import game.inventory.Inventory;
+import game.item.Item;
 import game.tiles.TileBase;
 import game.tiles.WaterTile;
 
@@ -54,7 +55,7 @@ public class Player extends Entity implements MoveAble, HurtAble {
 		moveBehaviour = new MoveBehaviour ( this, speed );
 		hurtBehavior = new HurtBehavior ( this, power, 20, 300 );
 		inventory = new Inventory ( handler );
-
+		
 		bounds = new Rectangle ();
 
 		bounds.x = 18;

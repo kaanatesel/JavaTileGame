@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import game.Handler;
 import game.entity.EntityManager;
 import game.entity.player.Player;
+import game.entity.staticEntity.CraftTable;
 import game.entity.staticEntity.Stone;
 import game.entity.staticEntity.Tree;
 import game.gfx.LoadFileAsString;
@@ -19,6 +20,7 @@ public class World {
 	private Handler handler;
 	private int spawnX, spawnY;
 	private Player player;
+	private CraftTable craftTable;
 
 	private EntityManager entityManager;
 	private ItemManager itemManager;
@@ -28,9 +30,26 @@ public class World {
 		loadWorld ( path );
 
 		player = new Player ( spawnX, spawnY, TileBase.WIDTH, TileBase.HEIGHT, handler );
+		craftTable = new CraftTable ( 150, 150, TileBase.WIDTH, TileBase.HEIGHT, handler );
 
-		entityManager = new EntityManager ( handler, player );
+		entityManager = new EntityManager ( handler, player, craftTable );
 		itemManager = new ItemManager ( handler );
+
+		createEntities ();
+
+		entityManager.getPlayer ().setX ( spawnX );
+		entityManager.getPlayer ().setY ( spawnY );
+
+	}
+
+	public void tick()
+	{
+		entityManager.tick ();
+		itemManager.tick ();
+	}
+
+	private void createEntities()
+	{
 
 		int staticEntityNumber = (int) ((Math.random () * 120) + 60);
 
@@ -60,15 +79,6 @@ public class World {
 			}
 		}
 
-		entityManager.getPlayer ().setX ( spawnX );
-		entityManager.getPlayer ().setY ( spawnY );
-
-	}
-
-	public void tick()
-	{
-		entityManager.tick ();
-		itemManager.tick ();
 	}
 
 	public void render( Graphics g )

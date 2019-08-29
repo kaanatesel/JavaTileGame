@@ -7,6 +7,7 @@ public class Assets {
 	private final static int CROP_WIDTH = 50, CROP_HEIGHT = 50;
 
 	private static BufferedImage inventory;
+	private static BufferedImage craftTableBackGround;
 
 	private static BufferedImage water;
 	private static BufferedImage tree;
@@ -15,6 +16,10 @@ public class Assets {
 	private static BufferedImage stone;
 	private static BufferedImage woodItem;
 	private static BufferedImage stoneItem;
+	private static BufferedImage craftTable;
+	private static BufferedImage sword;
+	private static BufferedImage armour;
+
 	// Player Animations
 	private static BufferedImage playerLeftStanding;
 	private static BufferedImage playerUpStanding;
@@ -36,6 +41,9 @@ public class Assets {
 	private static BufferedImage[] playerRightAttack;
 	private static BufferedImage[] playerDownAttack;
 	private static BufferedImage[] playerUpAttack;
+	// Craft Table Buttons
+	private static BufferedImage[] createButton;
+	private static BufferedImage[] useButton;
 	// Menu
 	private static BufferedImage background;
 	private static BufferedImage[] startBtn;
@@ -51,8 +59,12 @@ public class Assets {
 		rock = sheet.crop ( 0, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
 		tree = sheet.crop ( CROP_WIDTH * 3, 0, CROP_WIDTH, CROP_HEIGHT );
 		stone = sheet.crop ( CROP_WIDTH * 3, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
+		craftTable = sheet.crop ( CROP_WIDTH * 6, CROP_HEIGHT * 6, CROP_WIDTH, CROP_HEIGHT );
+		sword = sheet.crop ( CROP_WIDTH * 4, CROP_HEIGHT * 6, CROP_WIDTH, CROP_HEIGHT );
+		armour = sheet.crop ( CROP_WIDTH * 5, CROP_HEIGHT * 6, CROP_WIDTH, CROP_HEIGHT );
 
-		inventory = sheet.crop ( 0, CROP_HEIGHT * 5, CROP_WIDTH * 4, CROP_HEIGHT * 4 );
+		craftTableBackGround = sheet.crop ( CROP_WIDTH * 12, 0, CROP_WIDTH * 4, CROP_HEIGHT * 2 );
+		inventory = sheet.crop ( 0, CROP_HEIGHT * 5, CROP_WIDTH * 4, CROP_HEIGHT * 3 );
 
 		playerWalkingDown = new BufferedImage[2];
 		playerWalkingUp = new BufferedImage[2];
@@ -73,6 +85,12 @@ public class Assets {
 		startBtn = new BufferedImage[2];
 		exitBtn = new BufferedImage[2];
 		optionsBtn = new BufferedImage[2];
+		
+		
+
+		// Craft Table
+		createButton = new BufferedImage[2];
+		useButton = new BufferedImage[2];
 
 		background = sheet.crop ( CROP_WIDTH * 7, 0, CROP_WIDTH * 5, CROP_HEIGHT * 4 );
 
@@ -84,6 +102,12 @@ public class Assets {
 
 		exitBtn[0] = sheet.crop ( CROP_WIDTH * 8, CROP_HEIGHT * 4, CROP_WIDTH * 2, CROP_HEIGHT );
 		exitBtn[1] = sheet.crop ( CROP_WIDTH * 8, CROP_HEIGHT * 5, CROP_WIDTH * 2, CROP_HEIGHT );
+
+		createButton[0] = sheet.crop ( CROP_WIDTH * 12, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
+		createButton[1] = sheet.crop ( CROP_WIDTH * 13, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
+		
+		useButton[0] = sheet.crop ( CROP_WIDTH * 12, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
+		useButton[1] = sheet.crop ( CROP_WIDTH * 13, CROP_HEIGHT * 3, CROP_WIDTH, CROP_HEIGHT );
 
 		// Items
 		stoneItem = sheet.crop ( CROP_WIDTH * 4, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
@@ -180,6 +204,32 @@ public class Assets {
 	public static BufferedImage getInventory()
 	{
 		return inventory;
+	}
+	
+
+	public static BufferedImage getCraftTableBackGround()
+	{
+		return craftTableBackGround;
+	}
+
+	public static BufferedImage getStoneItem()
+	{
+		return stoneItem;
+	}
+
+	public static BufferedImage getSword()
+	{
+		return sword;
+	}
+
+	public static BufferedImage getArmour()
+	{
+		return armour;
+	}
+
+	public static BufferedImage[] getCreateButton()
+	{
+		return createButton;
 	}
 
 	public static void setInventory( BufferedImage inventory )
@@ -290,6 +340,11 @@ public class Assets {
 	public static void setTree( BufferedImage tree )
 	{
 		Assets.tree = tree;
+	}
+
+	public static BufferedImage[] getUseButton()
+	{
+		return useButton;
 	}
 
 	public static BufferedImage getDust()
@@ -441,6 +496,10 @@ public class Assets {
 	{
 		return optionsBtn;
 	}
-	
+
+	public static BufferedImage getCraftTable()
+	{
+		return craftTable;
+	}
 
 }

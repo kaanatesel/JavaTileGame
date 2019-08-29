@@ -13,15 +13,17 @@ public class Item implements ItemBase {
 	public static Item[] items = new Item[256];
 	public static Item woodItem = new Item ( Assets.getWoodItem (), "Wood", 0 );
 	public static Item stoneItem = new Item ( Assets.getstoneItem (), "Stone", 1 );
+	public static Item swordItem = new Item ( Assets.getSword (), "Sword", 2 );
+	public static Item armourItem = new Item ( Assets.getArmour (), "Armour", 3 );
 
-	private BufferedImage texture;
+	protected BufferedImage texture;
 	private int x, y;
 	private Rectangle bounds;
-	private Handler handler;
+	protected Handler handler;
 	private boolean isPickedUp = false;
-	private String name;
+	protected String name;
 	private int id;
-	private int countInInventory;
+	protected int countInInventory;
 
 	public Item( BufferedImage texture, String name, int id ) {
 		this.texture = texture;
@@ -29,6 +31,7 @@ public class Item implements ItemBase {
 		this.id = id;
 		this.countInInventory = 1;
 		bounds = new Rectangle ( x, y, ITEM_WIDTH, ITEM_HEIGHT );
+
 	}
 
 	@Override
@@ -58,7 +61,6 @@ public class Item implements ItemBase {
 		g.drawImage ( texture, x - 210, y - 55, 80, 80, null );
 		DrawString.drawText ( g, "> " + name + " <", x, y, 30 );
 		DrawString.drawText ( g, String.valueOf ( countInInventory ), x + 300, y, 30 );
-
 	}
 
 	public Item createNew( int x, int y )
@@ -170,6 +172,11 @@ public class Item implements ItemBase {
 	public void setName( String name )
 	{
 		this.name = name;
+	}
+
+	public static Item getArmourItem()
+	{
+		return armourItem;
 	}
 
 	public int getCountInInventory()

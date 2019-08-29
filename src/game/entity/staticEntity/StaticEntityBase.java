@@ -8,7 +8,7 @@ import game.entity.Entity;
 
 public class StaticEntityBase extends Entity {
 
-	private BufferedImage texture;
+	protected BufferedImage texture;
 
 	public StaticEntityBase( float x, float y, int height, int width, Handler handler ) {
 		super ( x, y, height, width, handler );

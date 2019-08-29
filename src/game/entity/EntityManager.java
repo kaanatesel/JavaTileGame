@@ -7,13 +7,15 @@ import java.util.Iterator;
 
 import game.Handler;
 import game.entity.player.Player;
+import game.entity.staticEntity.CraftTable;
 
 public class EntityManager {
 
 	private ArrayList<Entity> entities;
 	private Handler handler;
 	private Player player;
-	
+	private CraftTable craftTable;
+
 	private Comparator<Entity> renderSorter = new Comparator<Entity> ()
 	{
 
@@ -26,11 +28,13 @@ public class EntityManager {
 		}
 	};
 
-	public EntityManager( Handler handler, Player player ) {
+	public EntityManager( Handler handler, Player player, CraftTable craftTable ) {
 		this.handler = handler;
 		this.player = player;
+		this.craftTable = craftTable;
 		entities = new ArrayList<Entity> ();
 
+		addEntity ( craftTable );
 		addEntity ( player );
 	}
 
@@ -63,8 +67,9 @@ public class EntityManager {
 		{
 			entity.render ( g );
 		}
-		
+		craftTable.postRender ( g );
 		player.postRender ( g );
+
 	}
 
 	// Getters and Setter
@@ -97,4 +102,16 @@ public class EntityManager {
 	{
 		this.player = player;
 	}
+
+	public CraftTable getCraftTable()
+	{
+		return craftTable;
+	}
+
+	public void setCraftTable( CraftTable craftTable )
+	{
+		this.craftTable = craftTable;
+	}
+
+	
 }
