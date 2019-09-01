@@ -8,13 +8,12 @@ import game.Handler;
 import game.gfx.Assets;
 import game.gfx.DrawString;
 
-public class Item implements ItemBase {
+public class Item implements ItemBase
+{
 
 	public static Item[] items = new Item[256];
-	public static Item woodItem = new Item ( Assets.getWoodItem (), "Wood", 0 );
-	public static Item stoneItem = new Item ( Assets.getstoneItem (), "Stone", 1 );
-	public static Item swordItem = new Item ( Assets.getSword (), "Sword", 2 );
-	public static Item armourItem = new Item ( Assets.getArmour (), "Armour", 3 );
+	public static Item woodItem = new Item( Assets.getWoodItem(), "Wood", 0 );
+	public static Item stoneItem = new Item( Assets.getstoneItem(), "Stone", 1 );
 
 	protected BufferedImage texture;
 	private int x, y;
@@ -25,22 +24,23 @@ public class Item implements ItemBase {
 	private int id;
 	protected int countInInventory;
 
-	public Item( BufferedImage texture, String name, int id ) {
+	public Item( BufferedImage texture, String name, int id )
+	{
 		this.texture = texture;
 		this.name = name;
 		this.id = id;
 		this.countInInventory = 1;
-		bounds = new Rectangle ( x, y, ITEM_WIDTH, ITEM_HEIGHT );
+		bounds = new Rectangle( x, y, ITEM_WIDTH, ITEM_HEIGHT );
 
 	}
 
 	@Override
 	public void tick()
 	{
-		if ( handler.getWorld ().getEntityManager ().getPlayer ().getCollisionBounds ( 0f, 0f ).intersects ( bounds ) )
+		if ( handler.getWorld().getEntityManager().getPlayer().getCollisionBounds( 0f, 0f ).intersects( bounds ) )
 		{
 			isPickedUp = true;
-			handler.getWorld ().getEntityManager ().getPlayer ().getInventory ().addItem ( this );
+			handler.getWorld().getEntityManager().getPlayer().getInventory().addItem( this );
 		}
 	}
 
@@ -50,23 +50,23 @@ public class Item implements ItemBase {
 	{
 		if ( handler != null )
 		{
-			g.drawImage ( texture, (int) (x - handler.getGameCamera ().getxOffset ()),
-			        (int) (y - handler.getGameCamera ().getyOffset ()), ITEM_WIDTH, ITEM_HEIGHT, null );
+			g.drawImage( texture, ( int ) ( x - handler.getGameCamera().getxOffset() ),
+					( int ) ( y - handler.getGameCamera().getyOffset() ), ITEM_WIDTH, ITEM_HEIGHT, null );
 		}
 	}
 
 	// For inventory
 	public void render( Graphics g, int x, int y )
 	{
-		g.drawImage ( texture, x - 210, y - 55, 80, 80, null );
-		DrawString.drawText ( g, "> " + name + " <", x, y, 30 );
-		DrawString.drawText ( g, String.valueOf ( countInInventory ), x + 300, y, 30 );
+		g.drawImage( texture, x - 210, y - 55, 80, 80, null );
+		DrawString.drawText( g, "> " + name + " <", x, y, 30 );
+		DrawString.drawText( g, String.valueOf( countInInventory ), x + 300, y, 30 );
 	}
 
 	public Item createNew( int x, int y )
 	{
-		Item i = new Item ( texture, name, id );
-		i.setPosition ( x, y );
+		Item i = new Item( texture, name, id );
+		i.setPosition( x, y );
 
 		return i;
 	}
@@ -172,11 +172,6 @@ public class Item implements ItemBase {
 	public void setName( String name )
 	{
 		this.name = name;
-	}
-
-	public static Item getArmourItem()
-	{
-		return armourItem;
 	}
 
 	public int getCountInInventory()

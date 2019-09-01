@@ -4,7 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-public class MouseEventListener implements MouseListener, MouseMotionListener {
+public class MouseEventListener implements MouseListener , MouseMotionListener
+{
 
 	private int mouseX, mouseY;
 	private boolean leftButton, rightButton;
@@ -30,29 +31,37 @@ public class MouseEventListener implements MouseListener, MouseMotionListener {
 		return rightButton;
 	}
 
+	
+
+	@Override
+	public void mouseClicked( MouseEvent arg0 )
+	{
+		
+	}
+
 	@Override
 	public void mousePressed( MouseEvent e )
 	{
-		if ( e.getButton () == MouseEvent.BUTTON1 )
+		if ( e.getButton() == MouseEvent.BUTTON1 )
 			leftButton = true;
-		else if ( e.getButton () == MouseEvent.BUTTON3 )
+		else if ( e.getButton() == MouseEvent.BUTTON3 )
 			rightButton = true;
 	}
 
 	@Override
 	public void mouseReleased( MouseEvent e )
 	{
-		if ( e.getButton () == MouseEvent.BUTTON1 )
+		if ( e.getButton() == MouseEvent.BUTTON1 )
 			leftButton = false;
-		else if ( e.getButton () == MouseEvent.BUTTON3 )
+		else if ( e.getButton() == MouseEvent.BUTTON3 )
 			rightButton = false;
 	}
 
 	@Override
 	public void mouseMoved( MouseEvent e )
 	{
-		mouseX = e.getX ();
-		mouseY = e.getY ();
+		mouseX = e.getX();
+		mouseY = e.getY();
 	}
 
 	@Override
@@ -70,13 +79,6 @@ public class MouseEventListener implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseExited( MouseEvent e )
 	{
-
-	}
-
-	@Override
-	public void mouseClicked( MouseEvent arg0 )
-	{
-		// TODO Auto-generated method stub
 
 	}
 
