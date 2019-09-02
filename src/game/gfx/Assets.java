@@ -14,6 +14,7 @@ public class Assets
 	private static BufferedImage tree;
 	private static BufferedImage dust;
 	private static BufferedImage rock;
+	private static BufferedImage sand;
 	private static BufferedImage stone;
 	private static BufferedImage woodItem;
 	private static BufferedImage stoneItem;
@@ -44,7 +45,7 @@ public class Assets
 	private static BufferedImage[] playerRightAttack;
 	private static BufferedImage[] playerDownAttack;
 	private static BufferedImage[] playerUpAttack;
-	// Player Animations with armour
+	// Player Animations with Armour
 	private static BufferedImage playerLeftStandingArmour;
 	private static BufferedImage playerUpStandingArmour;
 	private static BufferedImage playerRightStandingArmour;
@@ -57,6 +58,32 @@ public class Assets
 	private static BufferedImage[] playerRightAttackArmour;
 	private static BufferedImage[] playerDownAttackArmour;
 	private static BufferedImage[] playerUpAttackArmour;
+	// Player Animations with Sword
+	private static BufferedImage playerLeftStandingSword;
+	private static BufferedImage playerUpStandingSword;
+	private static BufferedImage playerRightStandingSword;
+	private static BufferedImage playerDownStandingSword;
+	private static BufferedImage[] playerWalkingDownSword;
+	private static BufferedImage[] playerWalkingLeftSword;
+	private static BufferedImage[] playerWalkingRightSword;
+	private static BufferedImage[] playerWalkingUpSword;
+	private static BufferedImage[] playerLeftAttackSword;
+	private static BufferedImage[] playerRightAttackSword;
+	private static BufferedImage[] playerDownAttackSword;
+	private static BufferedImage[] playerUpAttackSword;
+	// Player Animations with Sword and Armour
+	private static BufferedImage playerLeftStandingSwordAndArmour;
+	private static BufferedImage playerUpStandingSwordAndArmour;
+	private static BufferedImage playerRightStandingSwordAndArmour;
+	private static BufferedImage playerDownStandingSwordAndArmour;
+	private static BufferedImage[] playerWalkingDownSwordAndArmour;
+	private static BufferedImage[] playerWalkingLeftSwordAndArmour;
+	private static BufferedImage[] playerWalkingRightSwordAndArmour;
+	private static BufferedImage[] playerWalkingUpSwordAndArmour;
+	private static BufferedImage[] playerLeftAttackSwordAndArmour;
+	private static BufferedImage[] playerRightAttackSwordAndArmour;
+	private static BufferedImage[] playerDownAttackSwordAndArmour;
+	private static BufferedImage[] playerUpAttackSwordAndArmour;
 
 	public static BufferedImage[] getPlayerDownAttackArmour()
 	{
@@ -89,6 +116,7 @@ public class Assets
 		craftTable = sheet.crop( CROP_WIDTH * 6, CROP_HEIGHT * 6, CROP_WIDTH, CROP_HEIGHT );
 		sword = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 6, CROP_WIDTH, CROP_HEIGHT );
 		armour = sheet.crop( CROP_WIDTH * 5, CROP_HEIGHT * 6, CROP_WIDTH, CROP_HEIGHT );
+		sand = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 7, CROP_WIDTH, CROP_HEIGHT );
 
 		craftTableBackGround = sheet.crop( CROP_WIDTH * 12, 0, CROP_WIDTH * 4, CROP_HEIGHT * 2 );
 		inventory = sheet.crop( 0, CROP_HEIGHT * 5, CROP_WIDTH * 4, CROP_HEIGHT * 3 );
@@ -102,6 +130,31 @@ public class Assets
 		playerWalkingUpArmour = new BufferedImage[2];
 		playerWalkingRightArmour = new BufferedImage[2];
 		playerWalkingLeftArmour = new BufferedImage[2];
+
+		playerLeftAttackArmour = new BufferedImage[2];
+		playerRightAttackArmour = new BufferedImage[2];
+		playerDownAttackArmour = new BufferedImage[2];
+		playerUpAttackArmour = new BufferedImage[2];
+
+		playerWalkingDownSword = new BufferedImage[2];
+		playerWalkingUpSword = new BufferedImage[2];
+		playerWalkingRightSword = new BufferedImage[2];
+		playerWalkingLeftSword = new BufferedImage[2];
+
+		playerLeftAttackSword = new BufferedImage[2];
+		playerRightAttackSword = new BufferedImage[2];
+		playerDownAttackSword = new BufferedImage[2];
+		playerUpAttackSword = new BufferedImage[2];
+
+		playerWalkingDownSwordAndArmour = new BufferedImage[2];
+		playerWalkingUpSwordAndArmour = new BufferedImage[2];
+		playerWalkingRightSwordAndArmour = new BufferedImage[2];
+		playerWalkingLeftSwordAndArmour = new BufferedImage[2];
+
+		playerLeftAttackSwordAndArmour = new BufferedImage[2];
+		playerRightAttackSwordAndArmour = new BufferedImage[2];
+		playerDownAttackSwordAndArmour = new BufferedImage[2];
+		playerUpAttackSwordAndArmour = new BufferedImage[2];
 
 		playerSwimmingDown = new BufferedImage[2];
 		playerSwimmingUp = new BufferedImage[2];
@@ -159,6 +212,16 @@ public class Assets
 		playerDownStandingArmour = sheet.crop( 0, CROP_HEIGHT * 12, CROP_WIDTH, CROP_HEIGHT );
 		playerUpStandingArmour = sheet.crop( CROP_WIDTH, CROP_HEIGHT * 15, CROP_WIDTH, CROP_HEIGHT );
 
+		playerRightStandingSword = sheet.crop( CROP_WIDTH * 2, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+		playerLeftStandingSword = sheet.crop( 0, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+		playerDownStandingSword = sheet.crop( 0, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+		playerUpStandingSword = sheet.crop( CROP_WIDTH, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+
+		playerRightStandingSwordAndArmour = sheet.crop( CROP_WIDTH * 6, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+		playerLeftStandingSwordAndArmour = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+		playerDownStandingSwordAndArmour = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+		playerUpStandingSwordAndArmour = sheet.crop( CROP_WIDTH * 5, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+
 		playerLeftStandSwimming = sheet.crop( CROP_WIDTH * 6, 0, CROP_WIDTH, CROP_HEIGHT );
 		playerRightStandSwimming = sheet.crop( CROP_WIDTH * 5, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
 		playerDownStandSwimming = sheet.crop( CROP_WIDTH * 5, 0, CROP_WIDTH, CROP_HEIGHT );
@@ -188,7 +251,59 @@ public class Assets
 		playerDownAttackArmour[1] = sheet.crop( CROP_WIDTH * 2, CROP_HEIGHT * 14, CROP_WIDTH, CROP_HEIGHT );
 
 		playerUpAttackArmour[0] = sheet.crop( CROP_WIDTH, CROP_HEIGHT * 15, CROP_WIDTH, CROP_HEIGHT );
-		playerUpAttackArmour[1] = sheet.crop( CROP_WIDTH * 3, CROP_HEIGHT * 13, CROP_WIDTH, CROP_HEIGHT );
+		playerUpAttackArmour[1] = sheet.crop( CROP_WIDTH * 3, CROP_HEIGHT * 14, CROP_WIDTH, CROP_HEIGHT );
+
+		// Player walking Sword
+		playerWalkingDownSword[0] = sheet.crop( CROP_WIDTH, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+		playerWalkingDownSword[1] = sheet.crop( CROP_WIDTH * 2, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+
+		playerWalkingUpSword[0] = sheet.crop( 0, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+		playerWalkingUpSword[1] = sheet.crop( CROP_WIDTH * 3, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+
+		playerWalkingRightSword[0] = sheet.crop( CROP_WIDTH * 2, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+		playerWalkingRightSword[1] = sheet.crop( CROP_WIDTH * 1, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+
+		playerWalkingLeftSword[0] = sheet.crop( 0, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+		playerWalkingLeftSword[1] = sheet.crop( CROP_WIDTH * 3, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+
+		// Player Attack Sword
+		playerLeftAttackSword[0] = sheet.crop( 0, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+		playerLeftAttackSword[1] = sheet.crop( 0, CROP_HEIGHT * 10, CROP_WIDTH, CROP_HEIGHT );
+
+		playerRightAttackSword[0] = sheet.crop( CROP_WIDTH * 2, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+		playerRightAttackSword[1] = sheet.crop( CROP_WIDTH * 1, CROP_HEIGHT * 10, CROP_WIDTH, CROP_HEIGHT );
+
+		playerDownAttackSword[0] = sheet.crop( 0, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+		playerDownAttackSword[1] = sheet.crop( CROP_WIDTH * 2, CROP_HEIGHT * 10, CROP_WIDTH, CROP_HEIGHT );
+
+		playerUpAttackSword[0] = sheet.crop( CROP_WIDTH, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+		playerUpAttackSword[1] = sheet.crop( CROP_WIDTH * 3, CROP_HEIGHT * 10, CROP_WIDTH, CROP_HEIGHT );
+
+		// Player walking Sword And Armour
+		playerWalkingDownSwordAndArmour[0] = sheet.crop( CROP_WIDTH * 5, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+		playerWalkingDownSwordAndArmour[1] = sheet.crop( CROP_WIDTH * 6, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+
+		playerWalkingUpSwordAndArmour[0] = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+		playerWalkingUpSwordAndArmour[1] = sheet.crop( CROP_WIDTH * 7, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+
+		playerWalkingRightSwordAndArmour[0] = sheet.crop( CROP_WIDTH * 6, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+		playerWalkingRightSwordAndArmour[1] = sheet.crop( CROP_WIDTH * 5, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+
+		playerWalkingLeftSwordAndArmour[0] = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+		playerWalkingLeftSwordAndArmour[1] = sheet.crop( CROP_WIDTH * 7, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+
+		// Player Attack Sword And Armour
+		playerLeftAttackSwordAndArmour[0] = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+		playerLeftAttackSwordAndArmour[1] = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 10, CROP_WIDTH, CROP_HEIGHT );
+
+		playerRightAttackSwordAndArmour[0] = sheet.crop( CROP_WIDTH * 6, CROP_HEIGHT * 9, CROP_WIDTH, CROP_HEIGHT );
+		playerRightAttackSwordAndArmour[1] = sheet.crop( CROP_WIDTH * 5, CROP_HEIGHT * 10, CROP_WIDTH, CROP_HEIGHT );
+
+		playerDownAttackSwordAndArmour[0] = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 8, CROP_WIDTH, CROP_HEIGHT );
+		playerDownAttackSwordAndArmour[1] = sheet.crop( CROP_WIDTH * 6, CROP_HEIGHT * 10, CROP_WIDTH, CROP_HEIGHT );
+
+		playerUpAttackSwordAndArmour[0] = sheet.crop( CROP_WIDTH * 5, CROP_HEIGHT * 11, CROP_WIDTH, CROP_HEIGHT );
+		playerUpAttackSwordAndArmour[1] = sheet.crop( CROP_WIDTH * 7, CROP_HEIGHT * 10, CROP_WIDTH, CROP_HEIGHT );
 
 		// Player walking
 		playerWalkingDown[0] = sheet.crop( CROP_WIDTH, CROP_HEIGHT, CROP_WIDTH, CROP_HEIGHT );
@@ -316,6 +431,256 @@ public class Assets
 	public static void setWater( BufferedImage water )
 	{
 		Assets.water = water;
+	}
+
+	public static BufferedImage getPlayerLeftStandingSword()
+	{
+		return playerLeftStandingSword;
+	}
+
+	public static void setPlayerLeftStandingSword( BufferedImage playerLeftStandingSword )
+	{
+		Assets.playerLeftStandingSword = playerLeftStandingSword;
+	}
+
+	public static BufferedImage getPlayerUpStandingSword()
+	{
+		return playerUpStandingSword;
+	}
+
+	public static void setPlayerUpStandingSword( BufferedImage playerUpStandingSword )
+	{
+		Assets.playerUpStandingSword = playerUpStandingSword;
+	}
+
+	public static BufferedImage getPlayerLeftStandingSwordAndArmour()
+	{
+		return playerLeftStandingSwordAndArmour;
+	}
+
+	public static void setPlayerLeftStandingSwordAndArmour( BufferedImage playerLeftStandingSwordAndArmour )
+	{
+		Assets.playerLeftStandingSwordAndArmour = playerLeftStandingSwordAndArmour;
+	}
+
+	public static BufferedImage getPlayerUpStandingSwordAndArmour()
+	{
+		return playerUpStandingSwordAndArmour;
+	}
+
+	public static void setPlayerUpStandingSwordAndArmour( BufferedImage playerUpStandingSwordAndArmour )
+	{
+		Assets.playerUpStandingSwordAndArmour = playerUpStandingSwordAndArmour;
+	}
+
+	public static BufferedImage getPlayerRightStandingSwordAndArmour()
+	{
+		return playerRightStandingSwordAndArmour;
+	}
+
+	public static void setPlayerRightStandingSwordAndArmour( BufferedImage playerRightStandingSwordAndArmour )
+	{
+		Assets.playerRightStandingSwordAndArmour = playerRightStandingSwordAndArmour;
+	}
+
+	public static BufferedImage getPlayerDownStandingSwordAndArmour()
+	{
+		return playerDownStandingSwordAndArmour;
+	}
+
+	public static void setPlayerDownStandingSwordAndArmour( BufferedImage playerDownStandingSwordAndArmour )
+	{
+		Assets.playerDownStandingSwordAndArmour = playerDownStandingSwordAndArmour;
+	}
+
+	public static BufferedImage getSand()
+	{
+		return sand;
+	}
+
+	public static void setSand( BufferedImage sand )
+	{
+		Assets.sand = sand;
+	}
+
+	public static BufferedImage[] getPlayerWalkingDownSwordAndArmour()
+	{
+		return playerWalkingDownSwordAndArmour;
+	}
+
+	public static void setPlayerWalkingDownSwordAndArmour( BufferedImage[] playerWalkingDownSwordAndArmour )
+	{
+		Assets.playerWalkingDownSwordAndArmour = playerWalkingDownSwordAndArmour;
+	}
+
+	public static BufferedImage[] getPlayerWalkingLeftSwordAndArmour()
+	{
+		return playerWalkingLeftSwordAndArmour;
+	}
+
+	public static void setPlayerWalkingLeftSwordAndArmour( BufferedImage[] playerWalkingLeftSwordAndArmour )
+	{
+		Assets.playerWalkingLeftSwordAndArmour = playerWalkingLeftSwordAndArmour;
+	}
+
+	public static BufferedImage[] getPlayerWalkingRightSwordAndArmour()
+	{
+		return playerWalkingRightSwordAndArmour;
+	}
+
+	public static void setPlayerWalkingRightSwordAndArmour( BufferedImage[] playerWalkingRightSwordAndArmour )
+	{
+		Assets.playerWalkingRightSwordAndArmour = playerWalkingRightSwordAndArmour;
+	}
+
+	public static BufferedImage[] getPlayerWalkingUpSwordAndArmour()
+	{
+		return playerWalkingUpSwordAndArmour;
+	}
+
+	public static void setPlayerWalkingUpSwordAndArmour( BufferedImage[] playerWalkingUpSwordAndArmour )
+	{
+		Assets.playerWalkingUpSwordAndArmour = playerWalkingUpSwordAndArmour;
+	}
+
+	public static BufferedImage[] getPlayerLeftAttackSwordAndArmour()
+	{
+		return playerLeftAttackSwordAndArmour;
+	}
+
+	public static void setPlayerLeftAttackSwordAndArmour( BufferedImage[] playerLeftAttackSwordAndArmour )
+	{
+		Assets.playerLeftAttackSwordAndArmour = playerLeftAttackSwordAndArmour;
+	}
+
+	public static BufferedImage[] getPlayerRightAttackSwordAndArmour()
+	{
+		return playerRightAttackSwordAndArmour;
+	}
+
+	public static void setPlayerRightAttackSwordAndArmour( BufferedImage[] playerRightAttackSwordAndArmour )
+	{
+		Assets.playerRightAttackSwordAndArmour = playerRightAttackSwordAndArmour;
+	}
+
+	public static BufferedImage[] getPlayerDownAttackSwordAndArmour()
+	{
+		return playerDownAttackSwordAndArmour;
+	}
+
+	public static void setPlayerDownAttackSwordAndArmour( BufferedImage[] playerDownAttackSwordAndArmour )
+	{
+		Assets.playerDownAttackSwordAndArmour = playerDownAttackSwordAndArmour;
+	}
+
+	public static BufferedImage[] getPlayerUpAttackSwordAndArmour()
+	{
+		return playerUpAttackSwordAndArmour;
+	}
+
+	public static void setPlayerUpAttackSwordAndArmour( BufferedImage[] playerUpAttackSwordAndArmour )
+	{
+		Assets.playerUpAttackSwordAndArmour = playerUpAttackSwordAndArmour;
+	}
+
+	public static BufferedImage getPlayerRightStandingSword()
+	{
+		return playerRightStandingSword;
+	}
+
+	public static void setPlayerRightStandingSword( BufferedImage playerRightStandingSword )
+	{
+		Assets.playerRightStandingSword = playerRightStandingSword;
+	}
+
+	public static BufferedImage getPlayerDownStandingSword()
+	{
+		return playerDownStandingSword;
+	}
+
+	public static void setPlayerDownStandingSword( BufferedImage playerDownStandingSword )
+	{
+		Assets.playerDownStandingSword = playerDownStandingSword;
+	}
+
+	public static BufferedImage[] getPlayerWalkingDownSword()
+	{
+		return playerWalkingDownSword;
+	}
+
+	public static void setPlayerWalkingDownSword( BufferedImage[] playerWalkingDownSword )
+	{
+		Assets.playerWalkingDownSword = playerWalkingDownSword;
+	}
+
+	public static BufferedImage[] getPlayerWalkingLeftSword()
+	{
+		return playerWalkingLeftSword;
+	}
+
+	public static void setPlayerWalkingLeftSword( BufferedImage[] playerWalkingLeftSword )
+	{
+		Assets.playerWalkingLeftSword = playerWalkingLeftSword;
+	}
+
+	public static BufferedImage[] getPlayerWalkingRightSword()
+	{
+		return playerWalkingRightSword;
+	}
+
+	public static void setPlayerWalkingRightSword( BufferedImage[] playerWalkingRightSword )
+	{
+		Assets.playerWalkingRightSword = playerWalkingRightSword;
+	}
+
+	public static BufferedImage[] getPlayerWalkingUpSword()
+	{
+		return playerWalkingUpSword;
+	}
+
+	public static void setPlayerWalkingUpSword( BufferedImage[] playerWalkingUpSword )
+	{
+		Assets.playerWalkingUpSword = playerWalkingUpSword;
+	}
+
+	public static BufferedImage[] getPlayerLeftAttackSword()
+	{
+		return playerLeftAttackSword;
+	}
+
+	public static void setPlayerLeftAttackSword( BufferedImage[] playerLeftAttackSword )
+	{
+		Assets.playerLeftAttackSword = playerLeftAttackSword;
+	}
+
+	public static BufferedImage[] getPlayerRightAttackSword()
+	{
+		return playerRightAttackSword;
+	}
+
+	public static void setPlayerRightAttackSword( BufferedImage[] playerRightAttackSword )
+	{
+		Assets.playerRightAttackSword = playerRightAttackSword;
+	}
+
+	public static BufferedImage[] getPlayerDownAttackSword()
+	{
+		return playerDownAttackSword;
+	}
+
+	public static void setPlayerDownAttackSword( BufferedImage[] playerDownAttackSword )
+	{
+		Assets.playerDownAttackSword = playerDownAttackSword;
+	}
+
+	public static BufferedImage[] getPlayerUpAttackSword()
+	{
+		return playerUpAttackSword;
+	}
+
+	public static void setPlayerUpAttackSword( BufferedImage[] playerUpAttackSword )
+	{
+		Assets.playerUpAttackSword = playerUpAttackSword;
 	}
 
 	public static BufferedImage getPlayerDownStandSwimming()

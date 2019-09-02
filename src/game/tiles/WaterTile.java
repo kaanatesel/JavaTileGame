@@ -11,12 +11,6 @@ public class WaterTile extends TileBase implements notSolid{
 		this.moveResistance = resistance;
 	}
 
-	@Override
-	public int moveResistance()
-	{
-		return moveResistance ;
-	}
-	
 	// Getters and Setters
 	
 	public int getMoveResistance()

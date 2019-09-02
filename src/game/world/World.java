@@ -30,7 +30,7 @@ public class World {
 		loadWorld ( path );
 
 		player = new Player ( spawnX, spawnY, TileBase.WIDTH, TileBase.HEIGHT, handler );
-		craftTable = new CraftTable ( 150, 150, TileBase.WIDTH, TileBase.HEIGHT, handler );
+		craftTable = new CraftTable ( 600, 40, TileBase.WIDTH, TileBase.HEIGHT, handler );
 
 		entityManager = new EntityManager ( handler, player, craftTable );
 		itemManager = new ItemManager ( handler );

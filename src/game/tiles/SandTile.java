@@ -2,22 +2,23 @@ package game.tiles;
 
 import game.gfx.Assets;
 
-public class DustTile extends TileBase implements notSolid {
-
+public class SandTile extends TileBase implements notSolid
+{
 	private int moveResistance;
 
-	public DustTile( int id, int resistance ) {
-		super ( Assets.getDust (), id );
+	public SandTile( int id, int resistance  )
+	{
+		super( Assets.getSand(), id );
 		this.moveResistance = moveResistance;
 	}
 
-	// Getters and Setters
-	
+	@Override
 	public int getMoveResistance()
 	{
 		return moveResistance;
 	}
-	
+
+	@Override
 	public void setMoveResistance( int moveResistance )
 	{
 		this.moveResistance = moveResistance;

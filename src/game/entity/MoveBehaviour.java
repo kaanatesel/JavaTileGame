@@ -126,7 +126,7 @@ public class MoveBehaviour {
 		{
 			notSolid currentTile = (notSolid) entity.getHandler ().getWorld ().getTile ( currentTileX / TileBase.WIDTH,
 			        currentTileY / TileBase.HEIGHT );
-			return currentTile.moveResistance ();
+			return currentTile.getMoveResistance ();
 		}
 		return -1;
 	}

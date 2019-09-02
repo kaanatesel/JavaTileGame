@@ -14,7 +14,7 @@ public class PlayerSkinManager
 	private Tile currentTile;
 	private int hitSpeed;
 	private boolean playerHandStatus = false;
-	private boolean playerArmourStatus = true;
+	private boolean playerArmourStatus = false;
 
 	private Animation currentPlayerLeftAttack;
 	private Animation currentPlayerRightAttack;
@@ -52,6 +52,28 @@ public class PlayerSkinManager
 	private Animation playerDownWalkArmour;
 	private Animation playerLeftWalkArmour;
 	private Animation playerRightWalkArmour;
+
+	// With Sword
+	private Animation playerLeftAttackSword;
+	private Animation playerRightAttackSword;
+	private Animation playerUpAttackSword;
+	private Animation playerDowntAttackSword;
+
+	private Animation playerUpWalkSword;
+	private Animation playerDownWalkSword;
+	private Animation playerLeftWalkSword;
+	private Animation playerRightWalkSword;
+
+	// With Armour and Sword
+	private Animation playerLeftAttackSwordAndArmour;
+	private Animation playerRightAttackSwordAndArmour;
+	private Animation playerUpAttackSwordAndArmour;
+	private Animation playerDowntAttackSwordAndArmour;
+
+	private Animation playerUpWalkSwordAndArmour;
+	private Animation playerDownWalkSwordAndArmour;
+	private Animation playerLeftWalkSwordAndArmour;
+	private Animation playerRightWalkSwordAndArmour;
 
 	public PlayerSkinManager( Handler handler, int hitSpeed )
 	{
@@ -95,6 +117,26 @@ public class PlayerSkinManager
 		playerRightAttackArmour = new Animation( hitSpeed, Assets.getPlayerRightAttackArmour() );
 		playerUpAttackArmour = new Animation( hitSpeed, Assets.getPlayerUpAttackArmour() );
 		playerDowntAttackArmour = new Animation( hitSpeed, Assets.getPlayerDownAttackArmour() );
+		// With Sword
+		playerUpWalkSword = new Animation( 300, Assets.getPlayerWalkingUpSword() );
+		playerDownWalkSword = new Animation( 300, Assets.getPlayerWalkingDownSword() );
+		playerLeftWalkSword = new Animation( 300, Assets.getPlayerWalkingLeftSword() );
+		playerRightWalkSword = new Animation( 300, Assets.getPlayerWalkingRightSword() );
+
+		playerLeftAttackSword = new Animation( hitSpeed, Assets.getPlayerLeftAttackSword() );
+		playerRightAttackSword = new Animation( hitSpeed, Assets.getPlayerRightAttackSword() );
+		playerUpAttackSword = new Animation( hitSpeed, Assets.getPlayerUpAttackSword() );
+		playerDowntAttackSword = new Animation( hitSpeed, Assets.getPlayerDownAttackSword() );
+		// With Sword and Armour
+		playerUpWalkSwordAndArmour = new Animation( 300, Assets.getPlayerWalkingUpSwordAndArmour() );
+		playerDownWalkSwordAndArmour = new Animation( 300, Assets.getPlayerWalkingDownSwordAndArmour() );
+		playerLeftWalkSwordAndArmour = new Animation( 300, Assets.getPlayerWalkingLeftSwordAndArmour() );
+		playerRightWalkSwordAndArmour = new Animation( 300, Assets.getPlayerWalkingRightSwordAndArmour() );
+
+		playerLeftAttackSwordAndArmour = new Animation( hitSpeed, Assets.getPlayerLeftAttackSwordAndArmour() );
+		playerRightAttackSwordAndArmour = new Animation( hitSpeed, Assets.getPlayerRightAttackSwordAndArmour() );
+		playerUpAttackSwordAndArmour = new Animation( hitSpeed, Assets.getPlayerUpAttackSwordAndArmour() );
+		playerDowntAttackSwordAndArmour = new Animation( hitSpeed, Assets.getPlayerDownAttackSwordAndArmour() );
 
 	}
 
@@ -130,7 +172,6 @@ public class PlayerSkinManager
 			currentPlayerFaceRight = Assets.getPlayerRightStanding();
 			currentPlayerFaceDown = Assets.getPlayerDownStanding();
 			currentPlayerFaceLeft = Assets.getPlayerLeftStanding();
-
 		}
 		// with Armour
 		if ( playerArmourStatus && !playerHandStatus )
@@ -150,6 +191,44 @@ public class PlayerSkinManager
 			currentPlayerFaceDown = Assets.getPlayerDownStandingArmour();
 			currentPlayerFaceLeft = Assets.getPlayerLeftStandingArmour();
 		}
+		// With Sword
+		if ( !playerArmourStatus && playerHandStatus )
+		{
+			currentPlayerUpWalk = playerUpWalkSword;
+			currentPlayerRightWalk = playerRightWalkSword;
+			currentPlayerDownWalk = playerDownWalkSword;
+			currentPlayerLeftWalk = playerLeftWalkSword;
+
+			currentPlayerUpAttack = playerUpAttackSword;
+			currentPlayerRightAttack = playerRightAttackSword;
+			currentPlayerDowntAttack = playerDowntAttackSword;
+			currentPlayerLeftAttack = playerLeftAttackSword;
+
+			currentPlayerFaceUp = Assets.getPlayerUpStandingSword();
+			currentPlayerFaceRight = Assets.getPlayerRightStandingSword();
+			currentPlayerFaceDown = Assets.getPlayerDownStandingSword();
+			currentPlayerFaceLeft = Assets.getPlayerLeftStandingSword();
+		}
+
+		// With Sword and Armour
+		if ( playerArmourStatus && playerHandStatus )
+		{
+			currentPlayerUpWalk = playerUpWalkSwordAndArmour;
+			currentPlayerRightWalk = playerRightWalkSwordAndArmour;
+			currentPlayerDownWalk = playerDownWalkSwordAndArmour;
+			currentPlayerLeftWalk = playerLeftWalkSwordAndArmour;
+
+			currentPlayerUpAttack = playerUpAttackSwordAndArmour;
+			currentPlayerRightAttack = playerRightAttackSwordAndArmour;
+			currentPlayerDowntAttack = playerDowntAttackSwordAndArmour;
+			currentPlayerLeftAttack = playerLeftAttackSwordAndArmour;
+
+			currentPlayerFaceUp = Assets.getPlayerUpStandingSwordAndArmour();
+			currentPlayerFaceRight = Assets.getPlayerRightStandingSwordAndArmour();
+			currentPlayerFaceDown = Assets.getPlayerDownStandingSwordAndArmour();
+			currentPlayerFaceLeft = Assets.getPlayerLeftStandingSwordAndArmour();
+		}
+
 	}
 
 	public Animation getCurrentPlayerLeftAttack()

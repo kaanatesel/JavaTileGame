@@ -31,7 +31,7 @@ public class Armour extends Item implements ItemBase , UseAble
 
 		this.setHandler( handler );
 
-		value = 0;
+		value = 20;
 		valueTypeName = "Wood";
 		valueTypeImg = Assets.getSword();
 

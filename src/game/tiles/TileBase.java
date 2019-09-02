@@ -3,7 +3,8 @@ package game.tiles;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public class TileBase implements Tile {
+public class TileBase implements Tile
+{
 
 	public static TileBase[] tiles = new TileBase[256];
 
@@ -11,13 +12,15 @@ public class TileBase implements Tile {
 	protected int id;
 
 	// Tiles
-	public static RockTile rockTile = new RockTile ( 0 );
-	public static WaterTile waterTile = new WaterTile ( 1, 3 );
-	public static DustTile dustTile = new DustTile ( 2, 0 );
+	public static RockTile rockTile = new RockTile( 0 );
+	public static WaterTile waterTile = new WaterTile( 1, 3 );
+	public static DustTile dustTile = new DustTile( 2, 0 );
+	public static SandTile sandTile = new SandTile( 3, 2 );
 
 	private int xLoc, yLoc;
 
-	public TileBase( BufferedImage texture, int id ) {
+	public TileBase( BufferedImage texture, int id )
+	{
 
 		this.texture = texture;
 		this.id = id;
@@ -34,7 +37,7 @@ public class TileBase implements Tile {
 	@Override
 	public void render( Graphics g, int x, int y )
 	{
-		g.drawImage ( texture, x, y, WIDTH, HEIGHT, null );
+		g.drawImage( texture, x, y, WIDTH, HEIGHT, null );
 		xLoc = x;
 		yLoc = y;
 

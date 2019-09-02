@@ -29,7 +29,7 @@ public class Sword extends Item implements ItemBase , UseAble
 
 		this.setHandler( handler );
 
-		value = 0;
+		value = 15;
 		valueTypeName = "Wood";
 		valueTypeImg = Assets.getSword();
 
