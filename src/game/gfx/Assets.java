@@ -39,7 +39,7 @@ public class Assets
 	private static BufferedImage[] playerWalkingDown;
 	private static BufferedImage[] playerWalkingLeft;
 	private static BufferedImage[] playerWalkingRight;
-	public static BufferedImage[] playerWalkingUp;
+	private static BufferedImage[] playerWalkingUp;
 	private static BufferedImage[] playerLeftAttack;
 	private static BufferedImage[] playerRightAttack;
 	private static BufferedImage[] playerDownAttack;
@@ -52,11 +52,22 @@ public class Assets
 	private static BufferedImage[] playerWalkingDownArmour;
 	private static BufferedImage[] playerWalkingLeftArmour;
 	private static BufferedImage[] playerWalkingRightArmour;
-	public static BufferedImage[] playerWalkingUpArmour;
+	private static BufferedImage[] playerWalkingUpArmour;
 	private static BufferedImage[] playerLeftAttackArmour;
 	private static BufferedImage[] playerRightAttackArmour;
 	private static BufferedImage[] playerDownAttackArmour;
 	private static BufferedImage[] playerUpAttackArmour;
+
+	public static BufferedImage[] getPlayerDownAttackArmour()
+	{
+		return playerDownAttackArmour;
+	}
+
+	public static void setPlayerDownAttackArmour( BufferedImage[] playerDownAttackArmour )
+	{
+		Assets.playerDownAttackArmour = playerDownAttackArmour;
+	}
+
 	// Craft Table Buttons
 	private static BufferedImage[] createButton;
 	private static BufferedImage[] useButton;
@@ -153,11 +164,11 @@ public class Assets
 		playerDownStandSwimming = sheet.crop( CROP_WIDTH * 5, 0, CROP_WIDTH, CROP_HEIGHT );
 		playerUpStandSwimming = sheet.crop( CROP_WIDTH * 4, CROP_HEIGHT * 2, CROP_WIDTH, CROP_HEIGHT );
 
-		// Player walking armour
-		playerWalkingDownArmour[0] = sheet.crop( 0, CROP_HEIGHT * 12, CROP_WIDTH, CROP_HEIGHT );
+		// Player walking Armour
+		playerWalkingDownArmour[0] = sheet.crop( CROP_WIDTH * 2, CROP_HEIGHT * 12, CROP_WIDTH, CROP_HEIGHT );
 		playerWalkingDownArmour[1] = sheet.crop( CROP_WIDTH, CROP_HEIGHT * 12, CROP_WIDTH, CROP_HEIGHT );
 
-		playerWalkingUpArmour[0] = sheet.crop( CROP_WIDTH, CROP_HEIGHT * 15, CROP_WIDTH, CROP_HEIGHT );
+		playerWalkingUpArmour[0] = sheet.crop( 0, CROP_HEIGHT * 13, CROP_WIDTH, CROP_HEIGHT );
 		playerWalkingUpArmour[1] = sheet.crop( CROP_WIDTH * 3, CROP_HEIGHT * 12, CROP_WIDTH, CROP_HEIGHT );
 
 		playerWalkingRightArmour[0] = sheet.crop( CROP_WIDTH * 2, CROP_HEIGHT * 13, CROP_WIDTH, CROP_HEIGHT );
@@ -500,6 +511,181 @@ public class Assets
 	public static void setPlayerSwimmingUp( BufferedImage[] playerSwimmingUp )
 	{
 		Assets.playerSwimmingUp = playerSwimmingUp;
+	}
+
+	public static BufferedImage getPlayerLeftStandingArmour()
+	{
+		return playerLeftStandingArmour;
+	}
+
+	public static void setPlayerLeftStandingArmour( BufferedImage playerLeftStandingArmour )
+	{
+		Assets.playerLeftStandingArmour = playerLeftStandingArmour;
+	}
+
+	public static BufferedImage getPlayerUpStandingArmour()
+	{
+		return playerUpStandingArmour;
+	}
+
+	public static void setPlayerUpStandingArmour( BufferedImage playerUpStandingArmour )
+	{
+		Assets.playerUpStandingArmour = playerUpStandingArmour;
+	}
+
+	public static BufferedImage getPlayerRightStandingArmour()
+	{
+		return playerRightStandingArmour;
+	}
+
+	public static void setPlayerRightStandingArmour( BufferedImage playerRightStandingArmour )
+	{
+		Assets.playerRightStandingArmour = playerRightStandingArmour;
+	}
+
+	public static BufferedImage getPlayerDownStandingArmour()
+	{
+		return playerDownStandingArmour;
+	}
+
+	public static void setPlayerDownStandingArmour( BufferedImage playerDownStandingArmour )
+	{
+		Assets.playerDownStandingArmour = playerDownStandingArmour;
+	}
+
+	public static BufferedImage[] getPlayerWalkingDownArmour()
+	{
+		return playerWalkingDownArmour;
+	}
+
+	public static void setPlayerWalkingDownArmour( BufferedImage[] playerWalkingDownArmour )
+	{
+		Assets.playerWalkingDownArmour = playerWalkingDownArmour;
+	}
+
+	public static BufferedImage[] getPlayerWalkingLeftArmour()
+	{
+		return playerWalkingLeftArmour;
+	}
+
+	public static void setPlayerWalkingLeftArmour( BufferedImage[] playerWalkingLeftArmour )
+	{
+		Assets.playerWalkingLeftArmour = playerWalkingLeftArmour;
+	}
+
+	public static BufferedImage[] getPlayerWalkingRightArmour()
+	{
+		return playerWalkingRightArmour;
+	}
+
+	public static void setPlayerWalkingRightArmour( BufferedImage[] playerWalkingRightArmour )
+	{
+		Assets.playerWalkingRightArmour = playerWalkingRightArmour;
+	}
+
+	public static BufferedImage[] getPlayerWalkingUpArmour()
+	{
+		return playerWalkingUpArmour;
+	}
+
+	public static void setPlayerWalkingUpArmour( BufferedImage[] playerWalkingUpArmour )
+	{
+		Assets.playerWalkingUpArmour = playerWalkingUpArmour;
+	}
+
+	public static BufferedImage[] getPlayerLeftAttackArmour()
+	{
+		return playerLeftAttackArmour;
+	}
+
+	public static void setPlayerLeftAttackArmour( BufferedImage[] playerLeftAttackArmour )
+	{
+		Assets.playerLeftAttackArmour = playerLeftAttackArmour;
+	}
+
+	public static BufferedImage[] getPlayerRightAttackArmour()
+	{
+		return playerRightAttackArmour;
+	}
+
+	public static void setPlayerRightAttackArmour( BufferedImage[] playerRightAttackArmour )
+	{
+		Assets.playerRightAttackArmour = playerRightAttackArmour;
+	}
+
+	public static BufferedImage[] getPlayerUpAttackArmour()
+	{
+		return playerUpAttackArmour;
+	}
+
+	public static void setPlayerUpAttackArmour( BufferedImage[] playerUpAttackArmour )
+	{
+		Assets.playerUpAttackArmour = playerUpAttackArmour;
+	}
+
+	public static int getCropWidth()
+	{
+		return CROP_WIDTH;
+	}
+
+	public static int getCropHeight()
+	{
+		return CROP_HEIGHT;
+	}
+
+	public static void setCraftTableBackGround( BufferedImage craftTableBackGround )
+	{
+		Assets.craftTableBackGround = craftTableBackGround;
+	}
+
+	public static void setStoneItem( BufferedImage stoneItem )
+	{
+		Assets.stoneItem = stoneItem;
+	}
+
+	public static void setCraftTable( BufferedImage craftTable )
+	{
+		Assets.craftTable = craftTable;
+	}
+
+	public static void setSword( BufferedImage sword )
+	{
+		Assets.sword = sword;
+	}
+
+	public static void setArmour( BufferedImage armour )
+	{
+		Assets.armour = armour;
+	}
+
+	public static void setCreateButton( BufferedImage[] createButton )
+	{
+		Assets.createButton = createButton;
+	}
+
+	public static void setUseButton( BufferedImage[] useButton )
+	{
+		Assets.useButton = useButton;
+	}
+
+	public static void setBackground( BufferedImage background )
+	{
+		Assets.background = background;
+	}
+
+	public static void setStartBtn( BufferedImage[] startBtn )
+	{
+		Assets.startBtn = startBtn;
+	}
+
+	public static void setExitBtn( BufferedImage[] exitBtn )
+	{
+		Assets.exitBtn = exitBtn;
+	}
+
+	public static void setOptionsBtn( BufferedImage[] optionsBtn )
+	{
+		Assets.optionsBtn = optionsBtn;
 	}
 
 	public static BufferedImage[] getPlayerSwimmingRight()

@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import game.Handler;
+import game.entity.player.PlayerSkinManager;
 import game.gfx.Assets;
 import game.gfx.DrawString;
 import game.inventory.Inventory;
@@ -120,6 +121,17 @@ public class Armour extends Item implements ItemBase , UseAble
 				&& !equiped )
 		{
 			equiped = true;
+			use();
+			return;
+		}
+		
+		if ( useBtnBounds.contains( handler.getMouseEventListener().getMouseX(),
+				handler.getMouseEventListener().getMouseY() ) && handler.getMouseEventListener().isLeftButton()
+				&& equiped )
+		{
+			equiped = false;
+			takeoff();
+			return;
 		}
 
 	}
@@ -148,7 +160,15 @@ public class Armour extends Item implements ItemBase , UseAble
 	@Override
 	public void use()
 	{
-		
+		handler.getWorld().getPlayer().getPlayerSkinManager().setPlayerArmourStatus( true );
+		handler.getWorld().getPlayer().getPlayerSkinManager().setPlayerEquipmentStatus();
+	}
+
+	@Override
+	public void takeoff()
+	{
+		handler.getWorld().getPlayer().getPlayerSkinManager().setPlayerArmourStatus( false );
+		handler.getWorld().getPlayer().getPlayerSkinManager().setPlayerEquipmentStatus();		
 	}
 
 }

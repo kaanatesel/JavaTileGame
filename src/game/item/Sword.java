@@ -121,6 +121,17 @@ public class Sword extends Item implements ItemBase , UseAble
 				&& !equiped )
 		{
 			equiped = true;
+			use();
+			return;
+		}
+
+		if ( useBtnBounds.contains( handler.getMouseEventListener().getMouseX(),
+				handler.getMouseEventListener().getMouseY() ) && handler.getMouseEventListener().isLeftButton()
+				&& equiped )
+		{
+			equiped = false;
+			takeoff();
+			return;
 		}
 	}
 
@@ -150,7 +161,15 @@ public class Sword extends Item implements ItemBase , UseAble
 	@Override
 	public void use()
 	{
+		handler.getWorld().getPlayer().getPlayerSkinManager().setPlayerHandStatus( true );
+		handler.getWorld().getPlayer().getPlayerSkinManager().setPlayerEquipmentStatus();
+	}
 
+	@Override
+	public void takeoff()
+	{
+		handler.getWorld().getPlayer().getPlayerSkinManager().setPlayerHandStatus( false );
+		handler.getWorld().getPlayer().getPlayerSkinManager().setPlayerEquipmentStatus();
 	}
 
 }
