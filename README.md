@@ -8,17 +8,28 @@ L -> Attack
 
 Some screen shots from game. ( Sorry for silly drawings :( but it is the best I can do )
 
-Welcome Screen
+ ### Welcome Screen ###
+
 ![alt text](https://github.com/kaanatesel/JavaTileGame/blob/master/res/images/ss1.png?raw=true)
-Game Play
+
+ ### Game Play ###
+
 ![alt text](https://github.com/kaanatesel/JavaTileGame/blob/master/res/images/ss3.png?raw=true)
-Player Swimming
+
+ ### Player Swimming  ###
+
 ![alt text](https://github.com/kaanatesel/JavaTileGame/blob/master/res/images/ss%202.png?raw=true)
-Inventory
+
+ ### Inventory  ###
+
 ![alt text](https://github.com/kaanatesel/JavaTileGame/blob/master/res/images/ss4.png?raw=true)
-Craft Table 
+
+ ### Craft Table  ###
+
 ![alt text](https://github.com/kaanatesel/JavaTileGame/blob/master/res/images/ss5.png?raw=true)
-After player bought some items
+
+ ### After player bought some items  ###
+ 
 ![alt text](https://github.com/kaanatesel/JavaTileGame/blob/master/res/images/ss6.png?raw=true)
 
 
