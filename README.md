@@ -1,13 +1,16 @@
 # JavaTileGame 
 It is a basic tile based game using java. 
-Controls:
-W,A,S,D -> Move
-E -> Open inventory
-F -> Open craft table when around the craft table
-L -> Attack
+Game Controls:
+Control       | PC
+------------- | -------------
+Move          | W,A,S,D
+Open inventory| E
+Open craft    | F
+Attack        | L
 
+<br />
 Some screen shots from game. ( Sorry for silly drawings :( but it is the best I can do )
-
+<br />
  ### Welcome Screen ###
 
 ![alt text](https://github.com/kaanatesel/JavaTileGame/blob/master/res/images/ss1.png?raw=true)
